@@ -1,0 +1,3703 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JVK SWMS ต้นแบบระบบ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="background-orb orb-a"></div>
+    <div class="background-orb orb-b"></div>
+    <div class="background-orb orb-c"></div>
+
+    <section class="home-gate" id="home-gate">
+      <div class="home-shell">
+        <div class="home-topbar">
+          <div class="home-badge">
+            <span class="status-dot"></span>
+            <span>SECURE JVK SWMS ACCESS</span>
+          </div>
+          <div class="lang-switch" aria-label="language switcher">
+            <button class="lang-button active" data-lang="th">TH</button>
+            <button class="lang-button" data-lang="en">EN</button>
+          </div>
+        </div>
+
+        <div class="home-grid">
+          <section class="home-hero">
+            <div class="department-chip">
+              <img
+                src="/Users/witthirasag./Downloads/Seal_of_the_Department_of_Mental_health.svg-removebg-preview.png"
+                alt="Department of Mental Health"
+                class="dmh-mark"
+              />
+              <div>
+                <p class="eyebrow">Department of Mental Health</p>
+                <p class="chip-copy">พัฒนาระบบฐานข้อมูลกลุ่มงานสังคมสงเคราะห์</p>
+              </div>
+            </div>
+
+            <div class="hero-brand-block">
+              <img
+                src="/Users/witthirasag./Downloads/ChatGPT_Image_20_เม.ย._2569_16_02_26-removebg-preview.png"
+                alt="JVK SWMS"
+                class="jvk-logo"
+              />
+              <div class="hero-copy-wrap">
+                <p class="eyebrow">JVK SWMS</p>
+                <h1 class="home-title">
+                  <span class="title-line" id="home-title-line-1">ยกระดับงาน</span>
+                  <span class="title-line title-glow" id="home-title-line-2">สังคมสงเคราะห์ จิตเวช</span>
+                  <span class="title-line" id="home-title-line-3">สู่ดิจิทัล</span>
+                </h1>
+                <p class="home-copy" id="home-copy-main">แพลตฟอร์มดิจิทัลครบวงจรสำหรับงานสังคมสงเคราะห์จิตเวช</p>
+                <div class="vision-card" id="home-quote">
+                  <p class="vision-label">Vision</p>
+                  <p class="home-quote">
+                    สร้างระบบที่ทำให้
+                    <strong>นักสังคมสงเคราะห์จิตเวช</strong>
+                    มีเวลามากขึ้นสำหรับสิ่งที่สำคัญที่สุด
+                    <strong>การดูแลผู้ป่วยและครอบครัว</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-glass-row">
+              <article class="glass-metric">
+                <span class="glass-label">Human-centered</span>
+                <strong>Social Work Operations</strong>
+              </article>
+              <article class="glass-metric">
+                <span class="glass-label">Trusted Data Layer</span>
+                <strong>Case · Assessment · Referral · Outcome</strong>
+              </article>
+            </div>
+          </section>
+
+          <aside class="login-card">
+            <div class="login-card-glow"></div>
+            <p class="eyebrow">SECURE JVK SWMS ACCESS</p>
+            <h2 class="login-title">Sign in with Username & Password</h2>
+            <p class="login-copy">
+              เข้าสู่ระบบเพื่อดู dashboard, case intake, care plan, referrals และรายงานสถิติ
+            </p>
+
+            <label>
+              Username
+              <input type="text" value="socialwork.admin" />
+            </label>
+            <label>
+              Password
+              <input type="password" value="JVKSWMS2026" />
+            </label>
+
+            <div class="login-actions">
+              <button class="primary-button hero-button" id="enter-system-button">เข้าสู่ระบบ Sign in</button>
+              <button class="ghost-button" id="preview-system-button">ดูระบบตัวอย่าง Preview</button>
+            </div>
+
+            <div class="login-footer">
+              <p>Department of Mental Health</p>
+              <p>Social Work Database Platform · JVK SWMS</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <div class="app-shell app-shell-hidden">
+      <aside class="sidebar">
+        <div class="brand-card">
+          <img
+            src="/Users/witthirasag./Downloads/ChatGPT_Image_20_เม.ย._2569_16_02_26-removebg-preview.png"
+            alt="JVK SWMS"
+            class="sidebar-logo"
+          />
+          <div>
+            <p class="eyebrow">ระบบจัดการเคส Case Management</p>
+            <h1>JVK SWMS</h1>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <button class="nav-link active" data-screen="dashboard">
+            <span>แดชบอร์ด Dashboard</span>
+            <small>ภาพรวมทีม</small>
+          </button>
+          <button class="nav-link" data-screen="inbox">
+            <span>กล่องเคส Case Inbox</span>
+            <small>งานเคสที่กำลังดำเนินการ</small>
+          </button>
+          <button class="nav-link" data-screen="intake">
+            <span>รับเคสใหม่ Intake</span>
+            <small>บันทึกข้อมูลตั้งต้น</small>
+          </button>
+          <button class="nav-link" data-screen="case-detail">
+            <span>รายละเอียดเคส</span>
+            <small>ข้อมูลหลักของเคส</small>
+          </button>
+          <button class="nav-link" data-screen="assessment">
+            <span>การประเมิน Assessment</span>
+            <small>ประเมินปัญหาสังคมและครอบครัว</small>
+          </button>
+          <button class="nav-link" data-screen="care-plan">
+            <span>แผนช่วยเหลือ Care Plan</span>
+            <small>เป้าหมายและการดำเนินงาน</small>
+          </button>
+          <button class="nav-link" data-screen="referrals">
+            <span>การส่งต่อ Referrals</span>
+            <small>ภายในและภายนอก</small>
+          </button>
+          <button class="nav-link" data-screen="reports">
+            <span>รายงาน Reports</span>
+            <small>สถิติและผลลัพธ์</small>
+          </button>
+          <button class="nav-link" data-screen="tasks">
+            <span>งานติดตาม Tasks</span>
+            <small>ติดตามงานและกำหนดนัด</small>
+          </button>
+          <button class="nav-link" data-screen="notes">
+            <span>บันทึกเคส Case Notes</span>
+            <small>ไทม์ไลน์และบันทึกการติดต่อ</small>
+          </button>
+          <button class="nav-link" data-screen="coordination">
+            <span>การประสานงาน Coordination</span>
+            <small>ญาติและทีม MDT</small>
+          </button>
+          <button class="nav-link" data-screen="close-case">
+            <span>ปิดเคส Close Case</span>
+            <small>ยุติเคสหรือส่งต่อ</small>
+          </button>
+        </nav>
+
+        <section class="sidebar-panel">
+          <p class="panel-label">แนวทางดีไซน์</p>
+          <p class="panel-text">
+            Clinical calm with luminous gradients, soft typography, generous spacing,
+            and modern operational cards.
+          </p>
+        </section>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div class="search-bar">
+            <span class="search-icon">⌘K</span>
+            <input type="text" placeholder="ค้นหาเลขเคส, HN, ชื่อผู้ป่วย, เบอร์โทร" />
+          </div>
+          <div class="topbar-actions">
+            <div class="lang-switch" aria-label="language switcher">
+              <button class="lang-button active" data-lang="th">TH</button>
+              <button class="lang-button" data-lang="en">EN</button>
+            </div>
+            <button class="ghost-button" data-open-drawer="filter-drawer">ตัวกรอง Filters</button>
+            <button class="ghost-button">ส่งออก Export</button>
+            <button class="primary-button" data-open-modal="quick-action-modal">+ รับเคสใหม่</button>
+          </div>
+        </header>
+
+        <section class="screen active" id="dashboard">
+          <div class="hero-card dashboard-hero-flat">
+            <div class="dashboard-hero-copy">
+              <p class="eyebrow">ข้อมูลสถิติของกลุ่มงานสังคมสงเคราะห์</p>
+              <h2>SW KPI Real-time Dashboard</h2>
+              <p class="hero-copy">
+                แพลตฟอร์มดิจิทัลครบวงจรพัฒนาโดยกลุ่มงานสังคมสงเคราะห์จิตเวช
+                รวมการจัดการเคส ติดตามผล รายงาน KPI และการสื่อสารทีมไว้ในระบบเดียว
+                การเปลี่ยนแปลงที่วัดได้ เมื่อนักสังคมสงเคราะห์ทำงานได้ง่ายขึ้น
+                เวลาที่เพิ่มขึ้นจะถูกนำไปดูแลผู้ป่วยได้มากขึ้น
+              </p>
+            </div>
+            <div class="dashboard-hero-summary">
+              <div class="gradient-pill">
+                <span>วันนี้</span>
+                <strong id="dashboard-today-label">22 Apr 2026</strong>
+              </div>
+              <div class="hero-stat">
+                <span>โฟกัสของทีม</span>
+                <strong id="dashboard-focus-label">มี 14 เคสที่ต้องติดตามใกล้ชิด</strong>
+              </div>
+              <div class="dashboard-filter-card">
+                <label class="calendar-select-wrap">
+                  <select id="dashboard-month-select"></select>
+                </label>
+                <label class="calendar-select-wrap">
+                  <select id="dashboard-fy-select"></select>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-sticky-nav">
+            <button class="dashboard-nav-pill active" data-scroll-target="dashboard-summary">ภาพรวม</button>
+            <button class="dashboard-nav-pill" data-scroll-target="dashboard-status">สถานะเคส</button>
+            <button class="dashboard-nav-pill" data-scroll-target="dashboard-kpi">KPI</button>
+            <button class="dashboard-nav-pill" data-scroll-target="dashboard-calendar">ปฏิทิน</button>
+            <button class="dashboard-nav-pill" data-scroll-target="dashboard-social">ปัญหาสังคม</button>
+            <button class="dashboard-nav-pill" data-scroll-target="dashboard-team">ทีม</button>
+            <button class="dashboard-nav-pill" data-scroll-target="dashboard-network">เครือข่าย</button>
+            <button class="dashboard-nav-pill" data-scroll-target="dashboard-area">พื้นที่</button>
+          </div>
+
+          <div class="dashboard-long-scroll">
+            <div class="dashboard-section-header" id="dashboard-summary">
+              <p class="eyebrow">Summary KPIs</p>
+              <h3>ตัวเลขภาพรวมของระบบ</h3>
+            </div>
+
+            <div class="stats-grid stats-grid-six" id="dashboard-summary-grid"></div>
+
+            <div class="dashboard-section-header" id="dashboard-status">
+              <p class="eyebrow">Overview Status</p>
+              <h3>ภาพรวมสถานะหลักของเคส</h3>
+            </div>
+
+            <div class="dashboard-stack">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Case Status</p>
+                    <h3>สถานะเคสหลัก</h3>
+                  </div>
+                </div>
+                <div class="status-grid-clean" id="dashboard-status-grid"></div>
+              </article>
+            </div>
+
+            <div class="dashboard-section-header">
+              <p class="eyebrow">Daily Focus</p>
+              <h3>ภาพรวมวันนี้</h3>
+            </div>
+
+            <div class="dashboard-stack">
+              <article class="panel overview-highlight-panel">
+                <div class="overview-highlight-grid" id="dashboard-daily-focus-grid"></div>
+              </article>
+            </div>
+
+            <div class="dashboard-section-header" id="dashboard-kpi">
+              <p class="eyebrow">KPI Analytics</p>
+              <h3>ภาพรวม KPI แบบอ่านง่ายและโปร่งขึ้น</h3>
+            </div>
+
+            <div class="dashboard-stack">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">KPI Visual</p>
+                    <h3>กราฟ KPI แบบสรุป</h3>
+                  </div>
+                </div>
+                <div class="chart-duo" id="dashboard-kpi-wrap"></div>
+              </article>
+            </div>
+
+            <div class="dashboard-stack">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Critical Queue</p>
+                    <h3>รายการที่ต้องติดตาม</h3>
+                  </div>
+                  <span class="chip chip-danger">Priority</span>
+                </div>
+                <div class="metric-stack compact-metric" id="dashboard-critical-queue"></div>
+              </article>
+            </div>
+
+            <div class="dashboard-stack" id="dashboard-calendar">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">ปฏิทินไทยสากล</p>
+                    <h3 id="calendar-month-label">เมษายน 2569</h3>
+                  </div>
+                  <label class="calendar-select-wrap">
+                    <select id="calendar-month-select"></select>
+                  </label>
+                </div>
+                <div class="month-calendar thai-calendar" id="month-calendar-grid">
+                </div>
+              </article>
+            </div>
+
+            <div class="dashboard-section-header">
+              <p class="eyebrow">Social Trends</p>
+              <h3>หมวดปัญหาหลักที่พบบ่อย</h3>
+            </div>
+
+            <div class="dashboard-stack" id="dashboard-social">
+              <article class="panel">
+                <div class="chart-list spacious-chart-list">
+                  <div class="chart-row"><span>ผู้ดูแล / ครอบครัว</span><b style="width: 88%"></b></div>
+                  <div class="chart-row"><span>ปัญหาสุราและยาเสพติด</span><b style="width: 84%"></b></div>
+                  <div class="chart-row"><span>สถานการณ์บุคคลเป็นอุปสรรคต่อการดูแลตัวเอง</span><b style="width: 79%"></b></div>
+                  <div class="chart-row"><span>สัมพันธภาพในครอบครัว</span><b style="width: 73%"></b></div>
+                  <div class="chart-row"><span>การเงิน / เศรษฐกิจ / อาชีพ</span><b style="width: 68%"></b></div>
+                  <div class="chart-row"><span>ที่อยู่ / สถานสงเคราะห์</span><b style="width: 61%"></b></div>
+                  <div class="chart-row"><span>ชุมชนหวาดกลัว</span><b style="width: 52%"></b></div>
+                  <div class="chart-row"><span>OSCC</span><b style="width: 46%"></b></div>
+                  <div class="chart-row"><span>ประเมินความพิการทางจิตหรือพฤติกรรม ทร.14</span><b style="width: 58%"></b></div>
+                  <div class="chart-row"><span>สงเคราะห์ค่าเดินทางกลับภูมิลำเนา</span><b style="width: 42%"></b></div>
+                  <div class="chart-row"><span>S1MO</span><b style="width: 34%"></b></div>
+                  <div class="chart-row"><span>การประเมินผู้ป่วยส่งกลับภูมิลำเนา</span><b style="width: 38%"></b></div>
+                  <div class="chart-row"><span>นิติจิตเวช</span><b style="width: 30%"></b></div>
+                </div>
+              </article>
+            </div>
+
+            <div class="dashboard-section-header">
+              <p class="eyebrow">Team Overview</p>
+              <h3>Social Worker Widgets</h3>
+            </div>
+
+            <div class="dashboard-stack" id="dashboard-team">
+              <article class="panel">
+                <div class="worker-grid">
+                  <div class="worker-card"><strong>คุณศิริพร ปรางปรุ</strong><p>Siriporn · Head of Social Work Department</p><span>34 active · 2 late</span></div>
+                  <div class="worker-card"><strong>คุณกิตติมาพร</strong><p>SW-Kittimaporn</p><span>22 active · 4 pending</span></div>
+                  <div class="worker-card"><strong>คุณนัทธมน</strong><p>SW-Natthamon</p><span>18 active · 3 conference</span></div>
+                  <div class="worker-card"><strong>คุณสุภาภรณ์</strong><p>SW-Supaporn</p><span>17 active · 2 D/C prep</span></div>
+                  <div class="worker-card"><strong>คุณพงศธร</strong><p>SW-Pongsatorn</p><span>15 active · 1 late</span></div>
+                  <div class="worker-card"><strong>คุณกนกวรรณ</strong><p>SW-Kanokwan</p><span>13 active · 2 network</span></div>
+                  <div class="worker-card"><strong>คุณจุฑาพร</strong><p>SW-Juthaporn</p><span>16 active · 3 OPD consult</span></div>
+                  <div class="worker-card"><strong>คุณวิฏฐิรษา</strong><p>SW-Witthirasa</p><span>21 active · 5 intake this month</span></div>
+                </div>
+              </article>
+            </div>
+
+            <div class="dashboard-section-header">
+              <p class="eyebrow">Network & Referrals</p>
+              <h3>เครือข่ายและปลายทางส่งต่อ</h3>
+            </div>
+
+            <div class="dashboard-stack" id="dashboard-network">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Referral Destinations</p>
+                    <h3>ส่งต่อสถานสงเคราะห์ / เครือข่าย</h3>
+                  </div>
+                </div>
+                <div class="table-wrap">
+                  <table class="compact-table premium-table">
+                    <thead>
+                      <tr><th>ปลายทาง</th><th>ทั้งหมด</th><th>เดือนนี้</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>บ้านเมตตาจังหวัดนครราชสีมา</td><td>24</td><td>3</td></tr>
+                      <tr><td>ศูนย์คุ้มครองและพัฒนาคุณภาพชีวิตจังหวัดนครราชสีมา</td><td>19</td><td>2</td></tr>
+                      <tr><td>บ้านพักเด็กจังหวัดนครราชสีมา</td><td>16</td><td>2</td></tr>
+                      <tr><td>บ้านพักเด็กจังหวัดชัยภูมิ</td><td>11</td><td>1</td></tr>
+                      <tr><td>สถานสงเคราะห์วัดม่วง</td><td>9</td><td>1</td></tr>
+                      <tr><td>สถานบำบัดเอกชน</td><td>14</td><td>2</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+
+            <div class="dashboard-stack">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Ward Consult KPI</p>
+                    <h3>KPI ตึกที่ส่งปรึกษา</h3>
+                  </div>
+                </div>
+                <div class="metric-stack compact-metric">
+                  <div class="metric-row"><span>Homeward</span><strong>22</strong></div>
+                  <div class="metric-row"><span>ชัยพฤกษ์</span><strong>17</strong></div>
+                  <div class="metric-row"><span>พุทธรักษา</span><strong>14</strong></div>
+                  <div class="metric-row"><span>พวงชมพู</span><strong>16</strong></div>
+                  <div class="metric-row"><span>พิรุณทอง</span><strong>11</strong></div>
+                  <div class="metric-row"><span>กรองจิต</span><strong>13</strong></div>
+                  <div class="metric-row"><span>เฟื่องฟ้า</span><strong>15</strong></div>
+                  <div class="metric-row"><span>ทองอุไร</span><strong>9</strong></div>
+                </div>
+              </article>
+            </div>
+
+            <div class="dashboard-section-header">
+              <p class="eyebrow">Doctor & Area Analytics</p>
+              <h3>แพทย์ผู้ส่ง consult และพื้นที่ที่ส่งปรึกษา</h3>
+            </div>
+
+            <div class="dashboard-stack" id="dashboard-area">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">MD OPD Consult SW</p>
+                    <h3>Total Consult by Doctor</h3>
+                  </div>
+                </div>
+                <div class="table-wrap">
+                  <table class="compact-table premium-table">
+                    <thead>
+                      <tr><th>แพทย์</th><th>ทั้งหมด</th><th>เดือนนี้</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>นพ.รัฐพล</td><td>26</td><td>4</td></tr>
+                      <tr><td>พญ.กานต์ธิมา</td><td>18</td><td>2</td></tr>
+                      <tr><td>พญ.ภรฑิตา</td><td>21</td><td>3</td></tr>
+                      <tr><td>พญ.อัญชลี</td><td>19</td><td>2</td></tr>
+                      <tr><td>พญ.รวิสุดา</td><td>15</td><td>2</td></tr>
+                      <tr><td>นพ.ปวริศร</td><td>17</td><td>2</td></tr>
+                      <tr><td>พญ.เวธนี</td><td>16</td><td>3</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+            </div>
+
+            <div class="dashboard-stack">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Top Areas</p>
+                    <h3>พื้นที่ที่ส่งปรึกษา</h3>
+                  </div>
+                </div>
+                <div class="area-cloud area-cloud-scroll">
+                  <span>อ.เมืองนครราชสีมา</span><span>บุรีรัมย์</span><span>ชัยภูมิ</span><span>สุรินทร์</span><span>โนนสูง</span><span>สูงเนิน</span><span>จักราช</span><span>โนนไทย</span><span>ชุมพวง</span><span>ปักธงชัย</span><span>บัวลาย</span><span>วังน้ำเขียว</span><span>ขามทะเลสอ</span><span>ครบุรี</span><span>โชคชัย</span><span>พิมาย</span><span>ปากช่อง</span><span>สีคิ้ว</span><span>ด่านขุนทด</span><span>บัวใหญ่</span><span>ขอนแก่น</span><span>อุดรธานี</span><span>เชียงใหม่</span><span>กรุงเทพมหานคร</span><span>นนทบุรี</span><span>ชลบุรี</span><span>นครศรีธรรมราช</span><span>สงขลา</span><span>ปัตตานี</span><span>ยะลา</span><span>นราธิวาส</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen" id="inbox">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">ศูนย์ควบคุมงาน</p>
+              <h2>Case Inbox ศูนย์ควบคุมงานเคส</h2>
+            </div>
+            <div class="inbox-month-bar">
+              <div class="filter-chips" id="inbox-month-chips">
+              </div>
+              <label class="calendar-select-wrap">
+                <select id="inbox-month-select">
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <div class="inbox-page">
+            <article class="panel intake-hero-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Monthly Case Control Center</p>
+                  <h3>ข้อมูลเคสทั้งหมดหลังรับเข้าและสถิติประจำเดือน</h3>
+                </div>
+                <span class="autosave">Monthly snapshot ready</span>
+              </div>
+              <p class="hero-copy">
+                หน้านี้รวมข้อมูลเคสทั้งหมดหลังรับเข้าไว้ในศูนย์กลางเดียว สำหรับติดตามเคสรายเดือน แยกตามนักสังคมสงเคราะห์
+                แหล่งรับเข้า สถานะงาน เครือข่ายที่ส่งต่อ และตัวชี้วัดการดำเนินงานแบบอ่านง่าย
+              </p>
+              <div class="intake-progress-shell">
+                <div class="intake-progress-track">
+                  <span class="intake-progress-bar" style="width: 88%"></span>
+                </div>
+                <div class="intake-progress-meta">
+                  <strong>Case Inbox Monthly Overview</strong>
+                  <span>ติดตามเคสทั้งหมด, KPI รายเดือน, และการกระจายงานของทีมในหน้าเดียว</span>
+                </div>
+              </div>
+            </article>
+
+            <div class="stats-grid stats-grid-six" id="inbox-summary-grid"></div>
+
+            <article class="panel">
+              <div class="toolbar">
+                <div class="filter-row">
+                  <button class="ghost-pill" data-open-drawer="filter-drawer">สถานะเคส</button>
+                  <button class="ghost-pill" data-open-drawer="filter-drawer">ระดับความเร่งด่วน</button>
+                  <button class="ghost-pill" data-open-drawer="filter-drawer">นักสังคมที่รับผิดชอบ</button>
+                  <button class="ghost-pill" data-open-drawer="filter-drawer">ช่องทางรับเข้า</button>
+                  <button class="ghost-pill">บันทึกมุมมอง</button>
+                </div>
+                <button class="primary-button">ส่งออก Monthly Report</button>
+              </div>
+
+              <div class="chart-duo inbox-chart-duo" id="inbox-chart-wrap"></div>
+            </article>
+
+            <div class="dashboard-section-header">
+              <p class="eyebrow">Case Status Overview</p>
+              <h3>ภาพรวมสถานะเคสและรายการที่รอติดตาม</h3>
+            </div>
+
+            <article class="panel">
+              <div class="status-matrix inbox-status-matrix" id="inbox-status-matrix"></div>
+            </article>
+
+            <div class="dashboard-section-header">
+              <p class="eyebrow">Service Totals</p>
+              <h3>สรุปช่องทางรับเข้าและผลงานรายเดือน</h3>
+            </div>
+
+            <article class="panel">
+              <div class="table-wrap">
+                <table class="compact-table premium-table">
+                  <thead>
+                    <tr><th>หมวดบริการ</th><th>ทั้งหมด</th><th>เดือนนี้</th></tr>
+                  </thead>
+                  <tbody id="inbox-service-totals-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <div class="dashboard-section-header">
+              <p class="eyebrow">Owner Widgets</p>
+              <h3>ตารางแยกนักสังคมผู้รับผิดชอบเคสแต่ละคน</h3>
+            </div>
+
+            <article class="panel">
+              <div class="worker-grid" id="inbox-worker-grid"></div>
+            </article>
+
+            <article class="panel">
+              <div class="table-wrap">
+                <table class="compact-table premium-table">
+                  <thead>
+                    <tr><th>นักสังคมสงเคราะห์</th><th>เคสทั้งหมด</th><th>เดือนนี้</th><th>In-Progress</th><th>OPD</th><th>IPD</th><th>ER</th><th>Conference</th><th>Referral</th></tr>
+                  </thead>
+                  <tbody id="inbox-owner-totals-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <div class="dashboard-section-header">
+              <p class="eyebrow">Case Registry</p>
+              <h3>ตารางเคสทั้งหมดหลังรับเข้า</h3>
+            </div>
+
+            <article class="panel">
+              <div class="table-wrap">
+                <table class="compact-table premium-table">
+                  <thead>
+                    <tr>
+                      <th>เลขเคส</th>
+                      <th>ผู้ป่วย</th>
+                      <th>ช่องทาง</th>
+                      <th>ปัญหาหลัก</th>
+                      <th>สถานะ</th>
+                      <th>อัปเดตล่าสุด</th>
+                      <th>นักสังคมที่รับผิดชอบ</th>
+                      <th>พื้นที่</th>
+                    </tr>
+                  </thead>
+                  <tbody id="inbox-case-registry-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <div class="dashboard-section-header">
+              <p class="eyebrow">Referral & Network</p>
+              <h3>สรุปการส่งต่อ ปลายทาง และ KPI เครือข่าย</h3>
+            </div>
+
+            <article class="panel">
+              <div class="table-wrap">
+                <table class="compact-table premium-table">
+                  <thead>
+                    <tr><th>ปลายทางส่งต่อสถานสงเคราะห์</th><th>ทั้งหมด</th><th>เดือนนี้</th></tr>
+                  </thead>
+                  <tbody id="inbox-referral-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="table-wrap">
+                <table class="compact-table premium-table">
+                  <thead>
+                    <tr><th>KPI ตึกที่ส่งปรึกษานักสังคมสงเคราะห์</th><th>ทั้งหมด</th><th>เดือนนี้</th></tr>
+                  </thead>
+                  <tbody id="inbox-ward-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="table-wrap">
+                <table class="compact-table premium-table">
+                  <thead>
+                    <tr><th>KPI Total MD OPD Consult SW</th><th>ทั้งหมด</th><th>เดือนนี้</th></tr>
+                  </thead>
+                  <tbody id="inbox-doctor-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Area Analytics</p>
+                  <h3>Total พื้นที่ที่ส่งปรึกษางานสังคมสงเคราะห์</h3>
+                </div>
+              </div>
+              <div class="area-cloud area-cloud-scroll large-area-cloud" id="inbox-area-cloud"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="intake">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">บันทึกรับเคสแบบมีโครงสร้าง</p>
+              <h2>รับเคสใหม่ New Intake</h2>
+            </div>
+            <div class="stepper">
+              <span class="step active">1 Information Case</span>
+              <span class="step active">2 Patient</span>
+              <span class="step active">3 Consult & Plan</span>
+              <span class="step">4 Status</span>
+            </div>
+          </div>
+
+          <div class="intake-page">
+            <article class="panel intake-hero-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Information Case</p>
+                  <h3>ฟอร์มรับเคสใหม่สำหรับงานสังคมสงเคราะห์จิตเวช</h3>
+                </div>
+                <span class="autosave">บันทึกอัตโนมัติแล้ว</span>
+              </div>
+              <p class="hero-copy">
+                ยกระดับงานสังคมสงเคราะห์จิตเวช สู่ดิจิทัลระบบบริหารจัดการเคสและข้อมูลสำหรับนักสังคมสงเคราะห์จิตเวช
+                พร้อมช่วยให้งานง่ายขึ้น เร็วขึ้น และแม่นยำขึ้น
+              </p>
+              <div class="intake-progress-shell">
+                <div class="intake-progress-track">
+                  <span class="intake-progress-bar" style="width: 76%"></span>
+                </div>
+                <div class="intake-progress-meta">
+                  <strong>Section Progress 76%</strong>
+                  <span>กรอกข้อมูลหลักแล้ว 3 จาก 4 ส่วน</span>
+                </div>
+              </div>
+              <div class="intake-summary-strip">
+                <div class="intake-summary-card">
+                  <span>Case ID ล่าสุด</span>
+                  <strong>SWMS-260422-018</strong>
+                </div>
+                <div class="intake-summary-card">
+                  <span>งานวันนี้</span>
+                  <strong>รับเคสใหม่ 9 เคส</strong>
+                </div>
+                <div class="intake-summary-card">
+                  <span>ระบบพร้อมใช้งาน</span>
+                  <strong>Social Work Intake Ready</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 01</p>
+                  <h3>Information Case</h3>
+                </div>
+                <span class="validation-badge success">พร้อมใช้งาน</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  เลขเคส
+                  <input type="text" value="SWMS-260422-018" id="intake-case-id" />
+                </label>
+                <label>
+                  นักสังคมที่รับผิดชอบ
+                  <select id="intake-owner">
+                    <option>คุณศิริพร ปรางปรุ (Siriporn - Head of Social Work Department)</option>
+                    <option>คุณกิตติมาพร (SW-Kittimaporn)</option>
+                    <option>คุณนัทธมน (SW-Natthamon)</option>
+                    <option>คุณสุภาภรณ์ (SW-Supaporn)</option>
+                    <option>คุณพงศธร (SW-Pongsatorn)</option>
+                    <option>คุณกนกวรรณ (SW-Kanokwan)</option>
+                    <option>คุณจุฑาพร (SW-Juthaporn)</option>
+                    <option>คุณวิฏฐิรษา (SW-Witthirasa)</option>
+                  </select>
+                </label>
+                <label>
+                  วันที่รับเคส
+                  <input type="text" value="22 เมษายน 2569" id="intake-case-date" />
+                </label>
+                <label>
+                  รับเข้าระบบช่องทาง
+                  <select id="intake-channel">
+                    <option>IPD</option>
+                    <option>OPD</option>
+                    <option>ER</option>
+                    <option>OPDเด็ก</option>
+                    <option>นิติจิตเวชOPD</option>
+                    <option>นิติจิตเวชIPD</option>
+                  </select>
+                </label>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 02</p>
+                  <h3>Patient Information</h3>
+                </div>
+                <span class="validation-badge success">ข้อมูลครบ</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  Patient Name
+                  <input type="text" value="Somjai Prasert" id="intake-patient-name" />
+                </label>
+                <label>
+                  HN
+                  <input type="text" value="HN 00047291" id="intake-hn" />
+                </label>
+                <label>
+                  Age
+                  <input type="text" value="72 ปี" id="intake-age" />
+                </label>
+                <label class="field-span-2">
+                  Address
+                  <input type="text" value="123/4 ต.ในเมือง อ.เมืองนครราชสีมา จ.นครราชสีมา" id="intake-address" />
+                </label>
+                <label>
+                  พื้นที่
+                  <select id="intake-area">
+                    <option>อ.เมืองนครราชสีมา</option>
+                    <option>บุรีรัมย์</option>
+                    <option>ชัยภูมิ</option>
+                    <option>สุรินทร์</option>
+                    <option>โนนสูง</option>
+                    <option>สูงเนิน</option>
+                    <option>จักราช</option>
+                    <option>โนนไทย</option>
+                    <option>ชุมพวง</option>
+                    <option>ปักธงชัย</option>
+                    <option>บัวลาย</option>
+                    <option>วังน้ำเขียว</option>
+                    <option>ลำทะเมนชัย</option>
+                    <option>บ้านเหลื่อม</option>
+                    <option>ขามทะเลสอ</option>
+                    <option>พระทองคำ</option>
+                    <option>ขามสะแกแสง</option>
+                    <option>ครบุรี</option>
+                    <option>โชคชัย</option>
+                    <option>พิมาย</option>
+                    <option>ปากช่อง</option>
+                    <option>ห้วยแถลง</option>
+                    <option>แก้งสนามนาง</option>
+                    <option>เมืองยาง</option>
+                    <option>เทพารักษ์</option>
+                    <option>เฉลิมพระเกียรติ</option>
+                    <option>เสิงสาง</option>
+                    <option>สีคิ้ว</option>
+                    <option>ด่านขุนทด</option>
+                    <option>บัวใหญ่</option>
+                    <option>หนองบุญนาก</option>
+                    <option>ประทาย</option>
+                    <option>คง</option>
+                    <option>สีดา</option>
+                    <option>โนนแดง</option>
+                    <option>ขอนแก่น</option>
+                    <option>อุดรธานี</option>
+                    <option>เลย</option>
+                    <option>หนองบัวลำภู</option>
+                    <option>หนองคาย</option>
+                    <option>บึงกาฬ</option>
+                    <option>สกลนคร</option>
+                    <option>นครพนม</option>
+                    <option>มุกดาหาร</option>
+                    <option>กาฬสินธุ์</option>
+                    <option>มหาสารคาม</option>
+                    <option>ร้อยเอ็ด</option>
+                    <option>ยโสธร</option>
+                    <option>อำนาจเจริญ</option>
+                    <option>อุบลราชธานี</option>
+                    <option>ศรีสะเกษ</option>
+                    <option>เชียงใหม่</option>
+                    <option>เชียงราย</option>
+                    <option>แม่ฮ่องสอน</option>
+                    <option>ลำพูน</option>
+                    <option>ลำปาง</option>
+                    <option>พะเยา</option>
+                    <option>แพร่</option>
+                    <option>น่าน</option>
+                    <option>อุตรดิตถ์</option>
+                    <option>ตาก</option>
+                    <option>สุโขทัย</option>
+                    <option>พิษณุโลก</option>
+                    <option>พิจิตร</option>
+                    <option>กำแพงเพชร</option>
+                    <option>เพชรบูรณ์</option>
+                    <option>กรุงเทพมหานคร</option>
+                    <option>นนทบุรี</option>
+                    <option>ปทุมธานี</option>
+                    <option>สมุทรปราการ</option>
+                    <option>สมุทรสาคร</option>
+                    <option>สมุทรสงคราม</option>
+                    <option>นครปฐม</option>
+                    <option>พระนครศรีอยุธยา</option>
+                    <option>ลพบุรี</option>
+                    <option>สระบุรี</option>
+                    <option>สิงห์บุรี</option>
+                    <option>อ่างทอง</option>
+                    <option>ชัยนาท</option>
+                    <option>นครสวรรค์</option>
+                    <option>อุทัยธานี</option>
+                    <option>กาญจนบุรี</option>
+                    <option>ราชบุรี</option>
+                    <option>เพชรบุรี</option>
+                    <option>ประจวบคีรีขันธ์</option>
+                    <option>สุพรรณบุรี</option>
+                    <option>ชลบุรี</option>
+                    <option>ระยอง</option>
+                    <option>จันทบุรี</option>
+                    <option>ตราด</option>
+                    <option>ฉะเชิงเทรา</option>
+                    <option>ปราจีนบุรี</option>
+                    <option>สระแก้ว</option>
+                    <option>นครนายก</option>
+                    <option>ชุมพร</option>
+                    <option>ระนอง</option>
+                    <option>สุราษฎร์ธานี</option>
+                    <option>กระบี่</option>
+                    <option>พังงา</option>
+                    <option>ภูเก็ต</option>
+                    <option>นครศรีธรรมราช</option>
+                    <option>ตรัง</option>
+                    <option>สตูล</option>
+                    <option>พัทลุง</option>
+                    <option>สงขลา</option>
+                    <option>ปัตตานี</option>
+                    <option>ยะลา</option>
+                    <option>นราธิวาส</option>
+                  </select>
+                </label>
+                <label>
+                  Admit Date
+                  <input type="text" value="21 เมษายน 2569" id="intake-admit-date" />
+                </label>
+                <label>
+                  Ward
+                  <select id="intake-ward">
+                    <option>Homeward</option>
+                    <option>ชัยพฤกษ์</option>
+                    <option>พุทธรักษา</option>
+                    <option>พวงชมพู</option>
+                    <option>พิรุณทอง</option>
+                    <option>กรองจิต</option>
+                    <option>เฟื่องฟ้า</option>
+                    <option>ทองอุไร</option>
+                  </select>
+                </label>
+                <label>
+                  MD
+                  <select id="intake-md">
+                    <option>นพ.รัฐพล</option>
+                    <option>พญ.กานต์ธิมา</option>
+                    <option>พญ.ภรฑิตา</option>
+                    <option>พญ.อัญชลี</option>
+                    <option>พญ.รวิสุดา</option>
+                    <option>นพ.ปวริศร</option>
+                    <option>พญ.เวธนี</option>
+                    <option>นพ.ณฐกร</option>
+                    <option>พญ.สายสุดา</option>
+                    <option>พญ.กรองกาญจน์</option>
+                    <option>นพ.ภัทรพล</option>
+                  </select>
+                </label>
+                <label class="field-span-2">
+                  Dx
+                  <input type="text" value="Schizophrenia with psychosocial discharge barrier" id="intake-dx" />
+                </label>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 03</p>
+                  <h3>Consult, Problem Summary & Priority</h3>
+                </div>
+                <span class="validation-badge warning">รอตรวจทาน</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label class="field-span-2">
+                  ปัญหา Consult
+                  <select id="intake-consult">
+                    <option>ปัญหาสุราและยาเสพติด</option>
+                    <option>สถานการณ์บุคคลเป็นอุปสรรคต่อการดูแลตัวเอง</option>
+                    <option>สัมพันธภาพในครอบครัว</option>
+                    <option>ปัญหาการดููแล</option>
+                    <option>การเงิน/เศรษฐกิจ/อาชีพ</option>
+                    <option>ชุมชนหวาดกลัว</option>
+                    <option>OSCC</option>
+                    <option>ที่อยู่อาศัย/สถานสงเคราะห์</option>
+                    <option>ประเมินความพิการทางจิตหรือพฤติกรรม ทร.14</option>
+                    <option>สงเคราะห์ค่าเดินทางกลับภูมิลำเนา</option>
+                    <option>S1MO</option>
+                    <option>การประเมินผู้ป่วยส่งกลับภูมิลำเนา</option>
+                    <option>นิติจิตเวช</option>
+                  </select>
+                </label>
+                <label class="field-span-2">
+                  สรุปปัญหา
+                  <textarea rows="5" id="intake-summary">ผู้ป่วยมีอุปสรรคด้านการดูแลต่อเนื่องหลังจำหน่าย ครอบครัวยังไม่พร้อมรับกลับ และต้องประเมินเครือข่ายในพื้นที่ร่วมกับทีมสหวิชาชีพเพิ่มเติม</textarea>
+                </label>
+                <label>
+                  ระดับความเร่งด่วน
+                  <select id="intake-priority">
+                    <option>เร่งด่วนสูง</option>
+                    <option>เร่งด่วน</option>
+                    <option>ปานกลาง</option>
+                    <option>ปกติ</option>
+                  </select>
+                </label>
+                <label>
+                  เบอร์ติดต่อ
+                  <input type="text" value="08X-XXX-4455" id="intake-phone" />
+                </label>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 04</p>
+                  <h3>Status, Timeline & Note</h3>
+                </div>
+                <span class="validation-badge pending">ยังไม่สมบูรณ์</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label class="field-span-2">
+                  สถานะ
+                  <select id="intake-status">
+                    <option>เคสที่รอดำเนินการ</option>
+                    <option>เคสที่กำลังดำเนินการ In-Progress</option>
+                    <option>เคสที่ดำเนินการเสร็จแล้ว Terminate case or D/C</option>
+                    <option>เคสที่รอ SW พบ patient</option>
+                    <option>เคสรอเข้าเขียนแผนใบสหวิชาชีพครบ 5 วันทำงาน</option>
+                    <option>เคสที่เข้าเขียนแผนใบสหวิชาชีพตึกครบ 5 วันทำการ</option>
+                    <option>เคสที่รอประสานงานเครือข่าย</option>
+                    <option>เคสเตรียม Conference กับสหวิชาชีพ</option>
+                    <option>เคสที่รอเตรียมชุมชน</option>
+                    <option>เคสที่รอ D/C แพทย์มี Order D/C</option>
+                    <option>เคสที่รอประเมินส่งกลับภูมิลำเนา</option>
+                    <option>เคสที่รอทำหนังสือราชการ</option>
+                    <option>เคสที่ late 5 วันทำการเข้าตึก</option>
+                    <option>Fact Finding/วินิจฉัยปัญหาทางสังคม</option>
+                    <option>EMR/HPI</option>
+                    <option>นัดต่อ F/U OPD</option>
+                    <option>พบญาติ วัน D/C</option>
+                    <option>ปรึกษาแพทย์</option>
+                    <option>ประสานเครือข่ายภายนอก</option>
+                    <option>ประเมินผู้พิการ ทร.14</option>
+                    <option>ต่อบัตรพิการ</option>
+                    <option>สงเคราะห์ค่าเดินทาง</option>
+                    <option>ส่งต่อ SW IPD</option>
+                    <option>นัดต่อเนื่อง SW เจ้าของเคส</option>
+                    <option>ทำเคสแทน</option>
+                    <option>รอผลเยี่ยมบ้าน/เครือข่าย</option>
+                    <option>ให้คำปรึกษาเฉพาะรายบุคคล</option>
+                    <option>บำบัดทางสังคม(ผู้ป่วย)</option>
+                    <option>บำบัดทางสังคม(ญาติ)</option>
+                    <option>บำบัดทางสังคม(กลุ่ม)</option>
+                    <option>บำบัดทางสังคม(ครอบครัว/คู่สมรส)</option>
+                    <option>ฟื้นฟูสมรรถภาพทางสังคม(บุคคล)</option>
+                    <option>ฟื้นฟูสมรรถภาพทางสังคม(กลุ่ม)</option>
+                  </select>
+                </label>
+                <label>
+                  วันที่อัปเดตข้อมูล
+                  <input type="text" value="22 เมษายน 2569" id="intake-updated-date" />
+                </label>
+                <label>
+                  วันที่ปิดเคส
+                  <input type="text" value="-" id="intake-closed-date" />
+                </label>
+                <label>
+                  วันที่เข้าตึก
+                  <input type="text" value="21 เมษายน 2569" id="intake-ward-date" />
+                </label>
+                <label class="field-span-2">
+                  Note
+                  <textarea rows="6" id="intake-note">ประสานทีมดูแลเบื้องต้นแล้ว รอพบญาติและสรุปแผนร่วมกับแพทย์เจ้าของไข้ก่อนเข้าสู่กระบวนการดูแลระยะถัดไป</textarea>
+                </label>
+              </div>
+
+              <div class="actions-row">
+                <button class="ghost-button" id="save-intake-draft-button">บันทึกแบบร่าง</button>
+                <button class="primary-button" id="create-intake-case-button">สร้างเคส Intake</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="case-detail">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">ข้อมูลหลักของเคส</p>
+              <h2>เคส SW-240221</h2>
+            </div>
+            <div class="detail-status">
+              <span class="chip chip-violet">ระหว่างประเมิน</span>
+              <span class="chip chip-danger">เสี่ยงสูง</span>
+            </div>
+          </div>
+
+          <div class="case-tabs">
+            <button class="case-tab active" data-case-tab="overview-tab">ภาพรวม</button>
+            <button class="case-tab" data-case-tab="timeline-tab">ไทม์ไลน์</button>
+            <button class="case-tab" data-case-tab="plan-tab">แผนช่วยเหลือ</button>
+            <button class="case-tab" data-case-tab="coordination-tab">การประสานงาน</button>
+            <button class="case-tab" data-case-tab="documents-tab">เอกสาร</button>
+          </div>
+
+          <div class="case-panel active" id="overview-tab">
+          <div class="case-detail-flow">
+            <article class="panel profile-panel case-profile-hero">
+              <div class="case-profile-top">
+                <div class="avatar-ring">SP</div>
+                <div class="case-profile-copy">
+                  <h3>Somjai Prasert</h3>
+                  <p class="muted" id="case-detail-meta-line">HN 00047291 · อายุ 72 ปี · Ward 5A</p>
+                </div>
+              </div>
+              <div class="info-pairs info-pairs-wide">
+                <div><span>โทรศัพท์</span><strong id="case-detail-phone">08X-XXX-1198</strong></div>
+                <div><span>ชื่อญาติและเบอร์ติดต่อ</span><strong id="case-detail-relative">Piyada P. · 08X-XXX-4455</strong></div>
+                <div><span>ปัญหาหลัก</span><strong id="case-detail-problem">ยังไม่มีผู้ดูแลที่ยืนยันแล้ว</strong></div>
+                <div><span>ติดต่อครั้งล่าสุด</span><strong id="case-detail-last-contact">วันนี้ 11:32</strong></div>
+                <div><span>นักสังคมที่รับผิดชอบ</span><strong id="case-detail-owner">คุณศิริพร ปรางปรุ</strong></div>
+                <div><span>พื้นที่</span><strong id="case-detail-area">อ.เมืองนครราชสีมา</strong></div>
+              </div>
+              <div class="risk-flags">
+                <span class="risk-tag active">ไม่มีผู้ดูแล</span>
+                <span class="risk-tag active">อุปสรรคก่อนจำหน่าย</span>
+                <span class="risk-tag">ความปลอดภัยที่บ้าน</span>
+              </div>
+            </article>
+
+            <article class="panel case-data-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Case Overview</p>
+                  <h3>ข้อมูลเคสจากการรับเคสใหม่</h3>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="premium-table case-detail-table">
+                  <tbody>
+                    <tr><th>เลขเคส</th><td id="case-detail-case-no">SWMS-260422-018</td><th>วันที่รับเคส</th><td>22 เมษายน 2569</td></tr>
+                    <tr><th>วันที่รับเคส</th><td id="case-detail-case-date">22 เมษายน 2569</td><th>นักสังคมที่รับผิดชอบ</th><td id="case-detail-owner-inline">คุณศิริพร ปรางปรุ</td></tr>
+                    <tr><th>ช่องทางรับเข้า</th><td id="case-detail-channel">IPD</td><th>Patient Name</th><td id="case-detail-patient-name">Somjai Prasert</td></tr>
+                    <tr><th>HN</th><td id="case-detail-hn">HN 00047291</td><th>Age</th><td id="case-detail-age">72 ปี</td></tr>
+                    <tr><th>Address</th><td colspan="3" id="case-detail-address">123/4 ต.ในเมือง อ.เมืองนครราชสีมา จ.นครราชสีมา</td></tr>
+                    <tr><th>Admit Date</th><td id="case-detail-admit-date">21 เมษายน 2569</td><th>Ward</th><td id="case-detail-ward">Homeward</td></tr>
+                    <tr><th>MD</th><td id="case-detail-md">นพ.รัฐพล</td><th>Dx</th><td id="case-detail-dx">Schizophrenia with psychosocial discharge barrier</td></tr>
+                    <tr><th>ปัญหา Consult</th><td id="case-detail-consult">สัมพันธภาพในครอบครัว / ปัญหาการดูแล</td><th>ระดับความเร่งด่วน</th><td id="case-detail-priority">เร่งด่วนสูง</td></tr>
+                    <tr><th>สถานะ</th><td id="case-detail-status-text">In-Progress</td><th>วันที่อัปเดตข้อมูล</th><td id="case-detail-updated-date">22 เมษายน 2569</td></tr>
+                    <tr><th>วันที่เข้าตึก</th><td id="case-detail-ward-date">21 เมษายน 2569</td><th>วันที่ปิดเคส</th><td id="case-detail-closed-date">-</td></tr>
+                    <tr><th>สรุปปัญหา</th><td colspan="3" id="case-detail-summary">ผู้ป่วยมีอุปสรรคด้านการดูแลต่อเนื่องหลังจำหน่าย ครอบครัวยังไม่พร้อมรับกลับ และต้องประเมินเครือข่ายในพื้นที่ร่วมกับทีมสหวิชาชีพเพิ่มเติม</td></tr>
+                    <tr><th>Note</th><td colspan="3" id="case-detail-note">ประสานทีมดูแลเบื้องต้นแล้ว รอพบญาติและสรุปแผนร่วมกับแพทย์เจ้าของไข้ก่อนเข้าสู่กระบวนการดูแลระยะถัดไป</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel timeline-panel case-timeline-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">ไทม์ไลน์เคส</p>
+                  <h3>เห็นลำดับเหตุการณ์ทั้งหมดในที่เดียว</h3>
+                </div>
+                <button class="ghost-button" data-open-modal="quick-note-modal">เพิ่มบันทึก</button>
+              </div>
+
+              <div class="timeline" id="case-detail-timeline-list">
+                <div class="timeline-item">
+                  <span class="timeline-dot dot-gradient"></span>
+                  <div>
+                    <strong>11:32 ประเมินเบื้องต้นเสร็จแล้ว</strong>
+                    <p>แรงสนับสนุนจากครอบครัวยังไม่ชัดเจน ยังไม่ยืนยันผู้ดูแล และความพร้อมของบ้านยังต้องประเมินต่อ</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <span class="timeline-dot"></span>
+                  <div>
+                    <strong>10:10 โทรหาบุตรสาว</strong>
+                    <p>ยังไม่มีผู้รับสาย กำหนดติดตามอีกครั้งเวลา 13:00</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <span class="timeline-dot"></span>
+                  <div>
+                    <strong>09:20 สร้างเคสจากการส่งปรึกษาของ ward</strong>
+                    <p>มีแผนจำหน่ายวันพรุ่งนี้และต้องการ social work support แบบเร่งด่วน</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="sub-panels">
+                <div class="mini-panel">
+                  <p class="eyebrow">รายการปัญหา</p>
+                  <ul id="case-detail-problem-list">
+                    <li>ยังไม่มีผู้ดูแล</li>
+                    <li>การติดต่อญาติยังไม่ครบ</li>
+                    <li>ต้องประเมินความพร้อมของบ้านเพิ่มเติม</li>
+                  </ul>
+                </div>
+                <div class="mini-panel">
+                  <p class="eyebrow">สรุปแผนช่วยเหลือ</p>
+                  <ul id="case-detail-plan-list">
+                    <li>โทรหาบุตรสาวและบุตรชาย</li>
+                    <li>นัดประชุม MDT ก่อนจำหน่าย</li>
+                    <li>เตรียม referral สำรองไปชุมชน</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel action-panel case-action-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">รายการงานสำคัญ</p>
+                  <h3>สิ่งที่ควรทำต่อ พร้อมวันเวลาและการแจ้งเตือน</h3>
+                </div>
+                <button class="primary-button">สร้าง Reminder</button>
+              </div>
+              <div class="task-reminder-grid" id="case-detail-reminder-grid">
+                <div id="case-detail-reminder-cards">
+                  <div class="list-item cardlet reminder-card">
+                    <div class="reminder-card-top">
+                      <strong>โทรหาญาติก่อน 13:00</strong>
+                      <span class="chip chip-warning">Today 13:00</span>
+                    </div>
+                    <p>โน้ต: ติดตามการยืนยันเรื่องผู้ดูแลและความพร้อมกลับบ้าน</p>
+                    <small>Reminder: แจ้งเตือนล่วงหน้า 30 นาที</small>
+                  </div>
+                  <div class="list-item cardlet reminder-card">
+                    <div class="reminder-card-top">
+                      <strong>เตรียม referral สำรอง</strong>
+                      <span class="chip chip-info">23 เม.ย. 09:30</span>
+                    </div>
+                    <p>โน้ต: จัดชุดเอกสารส่งต่อและเตรียมรายชื่อเครือข่ายที่พร้อมรับต่อ</p>
+                    <small>Reminder: แจ้งเตือนเช้าวันนัด</small>
+                  </div>
+                  <div class="list-item cardlet reminder-card">
+                    <div class="reminder-card-top">
+                      <strong>เปิด consult MDT</strong>
+                      <span class="chip chip-violet">23 เม.ย. 14:00</span>
+                    </div>
+                    <p>โน้ต: ทบทวนอุปสรรคก่อนจำหน่ายกับแพทย์ พยาบาล case manager และญาติ</p>
+                    <small>Reminder: แจ้งเตือนก่อนประชุม 1 ชั่วโมง</small>
+                  </div>
+                </div>
+              </div>
+              <div class="reminder-entry-panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Reminder Builder</p>
+                    <h3>เพิ่มงานติดตามใหม่</h3>
+                  </div>
+                </div>
+                <div class="form-grid reminder-form-grid">
+                  <label>
+                    ชื่องาน
+                    <input type="text" value="นัดติดตามญาติหลังจำหน่าย" id="reminder-title-input" />
+                  </label>
+                  <label>
+                    วันที่
+                    <input type="text" value="24 เมษายน 2569" id="reminder-date-input" />
+                  </label>
+                  <label>
+                    เวลา
+                    <input type="text" value="10:00 น." id="reminder-time-input" />
+                  </label>
+                  <label>
+                    แจ้งเตือน
+                    <select id="reminder-alert-input">
+                      <option>ก่อนเวลา 30 นาที</option>
+                      <option>ก่อนเวลา 1 ชั่วโมง</option>
+                      <option>ก่อนเวลา 1 วัน</option>
+                    </select>
+                  </label>
+                  <label class="field-span-2">
+                    Note
+                    <textarea rows="4" id="reminder-note-input">บันทึกสิ่งที่ต้องถามญาติ ความพร้อมด้านผู้ดูแล และประเด็นที่ต้องประสานทีมเพิ่มเติม</textarea>
+                  </label>
+                </div>
+                <div class="actions-row">
+                  <button class="primary-button" id="create-reminder-button">เพิ่ม Reminder</button>
+                </div>
+              </div>
+            </article>
+          </div>
+          </div>
+
+          <div class="case-panel" id="timeline-tab">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Activity Stream</p>
+                  <h3>Detailed chronology</h3>
+                </div>
+                <button class="primary-button" data-open-modal="quick-note-modal">Quick Note</button>
+              </div>
+              <div class="timeline roomy">
+                <div class="timeline-item">
+                  <span class="timeline-dot dot-gradient"></span>
+                  <div>
+                    <strong>15:18 Family call note saved</strong>
+                    <p>Daughter requested until tomorrow to confirm overnight support.</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <span class="timeline-dot"></span>
+                  <div>
+                    <strong>13:30 MDT conference scheduled</strong>
+                    <p>Ward physician, nurse CM, PT, and social worker invited.</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <span class="timeline-dot"></span>
+                  <div>
+                    <strong>11:32 Psychosocial assessment completed</strong>
+                    <p>Primary risks confirmed around caregiving and discharge safety.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="case-panel" id="plan-tab">
+            <div class="dashboard-grid plan-surface">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Goals</p>
+                    <h3>Current care plan</h3>
+                  </div>
+                </div>
+                <div class="goal-card">
+                  <p class="eyebrow">Primary Goal</p>
+                  <h4>Secure safe discharge support within 24 hours.</h4>
+                  <p class="muted">Track family decision and keep a backup referral ready.</p>
+                </div>
+              </article>
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Plan Health</p>
+                    <h3>Status summary</h3>
+                  </div>
+                </div>
+                <div class="metric-stack">
+                  <div class="metric-row"><span>Items completed</span><strong>1 / 3</strong></div>
+                  <div class="metric-row"><span>Review date</span><strong>23 Apr</strong></div>
+                  <div class="metric-row"><span>Family agreement</span><strong>Pending</strong></div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="case-panel" id="coordination-tab">
+            <div class="dashboard-grid">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Coordination Pulse</p>
+                    <h3>Current shared actions</h3>
+                  </div>
+                </div>
+                <div class="stack-list">
+                  <div class="list-item">
+                    <div>
+                      <strong>Family confirmation pending</strong>
+                      <p>Daughter will respond by tomorrow morning.</p>
+                    </div>
+                    <span class="chip chip-warning">Waiting</span>
+                  </div>
+                  <div class="list-item">
+                    <div>
+                      <strong>MDT review arranged</strong>
+                      <p>Clinical team to confirm discharge safety requirements.</p>
+                    </div>
+                    <span class="chip chip-info">Scheduled</span>
+                  </div>
+                </div>
+              </article>
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Contacts</p>
+                    <h3>Primary parties</h3>
+                  </div>
+                </div>
+                <div class="stack-list compact">
+                  <div class="list-item">
+                    <div>
+                      <strong>Piyada P.</strong>
+                      <p>Daughter · best time after 17:00</p>
+                    </div>
+                  </div>
+                  <div class="list-item">
+                    <div>
+                      <strong>Ward case manager</strong>
+                      <p>Internal coordination lead</p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="case-panel" id="documents-tab">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Documents</p>
+                  <h3>Attachments and consent</h3>
+                </div>
+                <button class="ghost-button" data-open-modal="upload-modal">Upload File</button>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>File</th>
+                      <th>Type</th>
+                      <th>Version</th>
+                      <th>Updated</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>case-summary-v2.pdf</td>
+                      <td>Summary</td>
+                      <td>v2</td>
+                      <td>Today 15:04</td>
+                    </tr>
+                    <tr>
+                      <td>consent-release.pdf</td>
+                      <td>Consent</td>
+                      <td>v1</td>
+                      <td>Today 10:42</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="assessment">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Structured Documentation</p>
+              <h2>Psychosocial Assessment</h2>
+            </div>
+            <div class="detail-status">
+              <span class="chip chip-violet" id="assessment-save-state">Draft saved</span>
+              <span class="chip chip-soft" id="assessment-review-state">Review due 24 Apr</span>
+            </div>
+          </div>
+
+          <div class="assessment-page">
+            <article class="panel intake-hero-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Assessment Blueprint</p>
+                  <h3>หน้า Assessment ที่ช่วยให้ประเมินได้เป็นระบบและต่อยอดแผนช่วยเหลือได้ทันที</h3>
+                </div>
+                <button class="ghost-button" id="save-assessment-button">Save Assessment</button>
+              </div>
+              <p class="hero-copy">
+                โครงสร้างนี้ออกแบบให้ใช้ได้จริงกับงานสังคมสงเคราะห์จิตเวช โดยเรียงจากข้อเท็จจริง ปัจจัยครอบครัว
+                ความเสี่ยง ทรัพยากรที่มี ไปจนถึง professional summary และ recommended intervention
+              </p>
+              <div class="intake-progress-shell">
+                <div class="intake-progress-track">
+                  <span class="intake-progress-bar" id="assessment-progress-bar" style="width: 82%"></span>
+                </div>
+                <div class="intake-progress-meta">
+                  <strong id="assessment-progress-label">Assessment Completion 82%</strong>
+                  <span id="assessment-progress-copy">พร้อมส่งต่อไปหน้า Care Plan หลังกรอก professional summary และ recommendation</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 01</p>
+                  <h3>Case Snapshot</h3>
+                </div>
+                <span class="validation-badge success">ข้อมูลครบ</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  เลขเคส
+                  <input type="text" value="SWMS-260422-018" />
+                </label>
+                <label>
+                  วันที่ประเมิน
+                  <input type="text" value="23 เมษายน 2569" />
+                </label>
+                <label>
+                  ชื่อผู้ป่วย
+                  <input type="text" value="Somjai Prasert" />
+                </label>
+                <label>
+                  HN
+                  <input type="text" value="HN 00047291" />
+                </label>
+                <label>
+                  อายุ / เพศ
+                  <input type="text" value="72 ปี / หญิง" />
+                </label>
+                <label>
+                  ผู้ให้ข้อมูล
+                  <input type="text" value="ผู้ป่วย + บุตรสาว + ทีม ward" />
+                </label>
+                <label>
+                  นักสังคมที่รับผิดชอบ
+                  <input type="text" value="คุณศิริพร ปรางปรุ" />
+                </label>
+                <label>
+                  ช่องทางรับเข้า / ward
+                  <input type="text" value="IPD / Homeward" />
+                </label>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 02</p>
+                  <h3>Presenting Problem</h3>
+                </div>
+                <span class="validation-badge success">พร้อมใช้งาน</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label class="field-span-2">
+                  เหตุที่ส่งปรึกษา
+                  <textarea rows="3" id="assessment-presenting-problem">มีแผนจำหน่าย แต่ครอบครัวยังไม่ยืนยันผู้ดูแลและยังต้องประเมินความพร้อมกลับบ้าน</textarea>
+                </label>
+                <label>
+                  ปัญหาหลักที่พบ
+                  <select id="assessment-primary-problem">
+                    <option>สัมพันธภาพในครอบครัว / ปัญหาการดูแล</option>
+                    <option>ที่อยู่อาศัย / สถานสงเคราะห์</option>
+                    <option>ปัญหาสุราและยาเสพติด</option>
+                    <option>ชุมชนหวาดกลัว</option>
+                  </select>
+                </label>
+                <label>
+                  ความเร่งด่วน
+                  <select id="assessment-urgency">
+                    <option>เร่งด่วนสูง</option>
+                    <option>เร่งด่วน</option>
+                    <option>ปกติ</option>
+                  </select>
+                </label>
+                <label class="field-span-2">
+                  ประเด็นที่ต้องจัดการทันที
+                  <textarea rows="3" id="assessment-immediate-issues">ยืนยันผู้ดูแล ประเมินความพร้อมของบ้าน และจัดแผนสำรองกรณีครอบครัวไม่พร้อมรับกลับ</textarea>
+                </label>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 03</p>
+                  <h3>Family / Caregiver Assessment</h3>
+                </div>
+                <span class="validation-badge success">ข้อมูลครบ</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  โครงสร้างครอบครัว
+                  <input type="text" value="อยู่กับบุตรสาวเป็นครั้งคราว ญาติคนอื่นอยู่ต่างจังหวัด" />
+                </label>
+                <label>
+                  ผู้ดูแลหลัก
+                  <input type="text" value="บุตรสาว (ยังไม่ยืนยัน)" id="assessment-caregiver" />
+                </label>
+                <label>
+                  ความสัมพันธ์ในครอบครัว
+                  <select>
+                    <option>มีความผูกพัน แต่การช่วยเหลือไม่สม่ำเสมอ</option>
+                  </select>
+                </label>
+                <label>
+                  ความพร้อมของผู้ดูแล
+                  <select id="assessment-caregiver-readiness">
+                    <option>ยังไม่พร้อม / ต้องติดตาม</option>
+                    <option>พร้อมบางส่วน</option>
+                    <option>พร้อมรับกลับ</option>
+                  </select>
+                </label>
+                <label class="field-span-2">
+                  ภาระผู้ดูแล / caregiver burden
+                  <textarea rows="3">บุตรสาวมีภาระงานและต้องดูแลสมาชิกในครอบครัวอีก 1 คน ทำให้ยังไม่มั่นใจในการรับกลับทันที</textarea>
+                </label>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 04</p>
+                  <h3>Social Functioning & Daily Living</h3>
+                </div>
+                <span class="validation-badge warning">รอตรวจทาน</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  การดูแลตนเอง
+                  <select>
+                    <option>ต้องการการดูแลบางส่วน</option>
+                  </select>
+                </label>
+                <label>
+                  ADL / การใช้ชีวิตประจำวัน
+                  <select>
+                    <option>มีข้อจำกัดเมื่อต้องอยู่ลำพัง</option>
+                  </select>
+                </label>
+                <label>
+                  การอยู่ร่วมกับคนอื่น
+                  <select>
+                    <option>อยู่ร่วมได้ แต่ต้องมีคนกำกับดูแล</option>
+                  </select>
+                </label>
+                <label>
+                  กลับไปอยู่บ้านได้หรือไม่
+                  <select>
+                    <option>ยังต้องประเมินเพิ่ม</option>
+                  </select>
+                </label>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 05</p>
+                  <h3>Economic / Occupation / Resources</h3>
+                </div>
+                <span class="validation-badge pending">ยังไม่สมบูรณ์</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  รายได้
+                  <input type="text" value="ไม่มีรายได้ประจำ" />
+                </label>
+                <label>
+                  อาชีพ
+                  <input type="text" value="ไม่ได้ประกอบอาชีพ" />
+                </label>
+                <label>
+                  ผู้สนับสนุนค่าใช้จ่าย
+                  <input type="text" value="บุตรสาวช่วยเป็นครั้งคราว" />
+                </label>
+                <label>
+                  ปัญหาเศรษฐกิจที่กระทบการรักษา
+                  <select>
+                    <option>มีผลต่อการเดินทางและการดูแลต่อเนื่อง</option>
+                  </select>
+                </label>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 06</p>
+                  <h3>Housing / Community / Service Access</h3>
+                </div>
+                <span class="validation-badge warning">รอตรวจทาน</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  ที่อยู่อาศัยปัจจุบัน
+                  <input type="text" value="บ้านญาติ / พักไม่ต่อเนื่อง" />
+                </label>
+                <label>
+                  ความปลอดภัยของที่พัก
+                  <select id="assessment-home-safety">
+                    <option>ต้องประเมินเพิ่มเติม</option>
+                    <option>พอใช้ได้ แต่ต้องติดตาม</option>
+                    <option>พร้อมกลับบ้าน</option>
+                  </select>
+                </label>
+                <label>
+                  ชุมชนยอมรับหรือไม่
+                  <select>
+                    <option>ยังไม่แน่ชัด / ต้องประสานพื้นที่</option>
+                  </select>
+                </label>
+                <label>
+                  การเข้าถึงบริการ
+                  <select>
+                    <option>มีข้อจำกัดเรื่องผู้พาและการเดินทาง</option>
+                  </select>
+                </label>
+                <label class="field-span-2">
+                  หน่วยงานที่อาจต้องประสาน
+                  <textarea rows="3">อปท. ในพื้นที่, เครือข่ายชุมชน, หน่วยงานสวัสดิการ, สถานสงเคราะห์สำรอง</textarea>
+                </label>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 07</p>
+                  <h3>Risk Assessment</h3>
+                </div>
+                <span class="validation-badge success">ประเมินแล้ว</span>
+              </div>
+              <div class="risk-flags">
+                <span class="risk-tag active">ไม่มีผู้ดูแล</span>
+                <span class="risk-tag active">เสี่ยงกลับบ้านไม่ได้</span>
+                <span class="risk-tag">เสี่ยงไร้ที่อยู่</span>
+                <span class="risk-tag">เสี่ยงถูกทอดทิ้ง</span>
+                <span class="risk-tag">เสี่ยงหลุดการรักษา</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  Risk level
+                  <select id="assessment-risk-level">
+                    <option>High</option>
+                    <option>Moderate</option>
+                    <option>Low</option>
+                  </select>
+                </label>
+                <label>
+                  Safety / abuse concern
+                  <select>
+                    <option>ไม่พบข้อมูลชัดเจน แต่ควรติดตาม</option>
+                  </select>
+                </label>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 07A</p>
+                  <h3>Assessment Checklist & Auto Risk Summary</h3>
+                </div>
+                <span class="validation-badge success" id="assessment-checklist-state">พร้อมใช้งาน</span>
+              </div>
+              <div class="assessment-checklist-grid">
+                <div class="assessment-checklist-card">
+                  <label class="check-row"><input type="checkbox" data-assessment-check="presenting-problem" checked />ข้อมูลเหตุส่งปรึกษาครบ</label>
+                  <label class="check-row"><input type="checkbox" data-assessment-check="caregiver" checked />ประเมินญาติ / ผู้ดูแลแล้ว</label>
+                  <label class="check-row"><input type="checkbox" data-assessment-check="housing" checked />ประเมินที่อยู่อาศัย / ความพร้อมกลับบ้านแล้ว</label>
+                  <label class="check-row"><input type="checkbox" data-assessment-check="risk" checked />ประเมินความเสี่ยงแล้ว</label>
+                  <label class="check-row"><input type="checkbox" data-assessment-check="summary" checked />เขียน professional summary แล้ว</label>
+                  <label class="check-row"><input type="checkbox" data-assessment-check="recommendation" />ระบุ recommended intervention ครบ</label>
+                </div>
+                <div class="assessment-auto-card">
+                  <div class="metric-stack compact-metric">
+                    <div class="metric-row"><span>Checklist completion</span><strong id="assessment-checklist-completion">5 / 6</strong></div>
+                    <div class="metric-row"><span>Auto risk score</span><strong id="assessment-auto-risk-score">8 / 10</strong></div>
+                    <div class="metric-row"><span>Auto risk summary</span><strong id="assessment-auto-risk-level">High risk</strong></div>
+                  </div>
+                  <div class="auto-risk-note" id="assessment-auto-risk-note">เคสนี้มีความเสี่ยงสูงจากความไม่ชัดเจนของผู้ดูแล ความพร้อมกลับบ้าน และงานเร่งด่วนก่อนจำหน่าย</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 08</p>
+                  <h3>Strengths / Resources / Professional Summary</h3>
+                </div>
+                <span class="validation-badge success">พร้อมส่งต่อแผน</span>
+              </div>
+              <label class="full-width">
+                จุดแข็ง / strengths
+                <textarea rows="3" id="assessment-strengths">ผู้ป่วยให้ความร่วมมือดี ญาติหลักยังติดต่อได้ ทีม ward พร้อมช่วยประสาน และมีเครือข่ายในพื้นที่ที่สามารถประเมินต่อได้</textarea>
+              </label>
+              <label class="full-width">
+                Social Work Impression / วินิจฉัยปัญหาทางสังคม
+                <textarea rows="4" id="assessment-summary">ปัญหาหลักคือความไม่พร้อมของผู้ดูแลและความไม่ชัดเจนของแผนกลับบ้าน ส่งผลให้การจำหน่ายมีความเสี่ยง จำเป็นต้องประเมินทรัพยากรครอบครัวและเครือข่ายในพื้นที่ร่วมกับทีมสหวิชาชีพ</textarea>
+              </label>
+              <div class="form-grid intake-form-grid">
+                <label class="field-span-2">
+                  Recommended Intervention
+                  <textarea rows="4" id="assessment-recommendation">1) ติดตามญาติหลักเพื่อยืนยัน caregiver plan 2) ประชุม MDT ก่อนจำหน่าย 3) เตรียม referral สำรอง 4) ประสานเครือข่ายชุมชนและติดตามหลังจำหน่าย</textarea>
+                </label>
+              </div>
+            </article>
+
+            <article class="panel action-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Assessment Output</p>
+                  <h3>ผลลัพธ์ที่ส่งต่อไปหน้า Care Plan ได้ทันที</h3>
+                </div>
+              </div>
+              <div class="metric-stack">
+                <div class="metric-row"><span>Required fields</span><strong id="assessment-output-required">82%</strong></div>
+                <div class="metric-row"><span>Problem List</span><strong id="assessment-output-problems">4 ประเด็นสำคัญ</strong></div>
+                <div class="metric-row"><span>Priority Level</span><strong id="assessment-output-priority">High</strong></div>
+                <div class="metric-row"><span>Discharge barrier</span><strong id="assessment-output-barrier">Caregiver + housing</strong></div>
+                <div class="metric-row"><span>Recommended referral</span><strong id="assessment-output-referral">Community / shelter backup</strong></div>
+                <div class="metric-row"><span>Next review</span><strong id="assessment-output-review">24 Apr 2026</strong></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="care-plan">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Goal-Based Workflow</p>
+              <h2>Care Plan</h2>
+            </div>
+            <div class="topbar-actions">
+              <button class="ghost-button" id="sync-care-plan-button">Sync from Assessment</button>
+              <button class="primary-button" id="save-care-plan-button">Save Care Plan</button>
+            </div>
+          </div>
+
+          <div class="care-plan-page">
+            <article class="panel intake-hero-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Assessment to Action</p>
+                  <h3>แปลงผลการประเมินเป็นแผนช่วยเหลือที่ติดตามผลได้จริง</h3>
+                </div>
+                <span class="autosave" id="care-plan-sync-state">Plan synced from Assessment</span>
+              </div>
+              <p class="hero-copy">
+                หน้านี้เชื่อมจาก Assessment โดยตรง ใช้โครง `problem -> goal -> intervention -> owner -> due date -> outcome`
+                เพื่อให้ทีมสังคมสงเคราะห์ติดตามงานได้ต่อเนื่อง วัดผลได้ และส่งต่อให้ MDT อ่านเข้าใจได้ทันที
+              </p>
+              <div class="intake-progress-shell">
+                <div class="intake-progress-track">
+                  <span class="intake-progress-bar" style="width: 74%"></span>
+                </div>
+                <div class="intake-progress-meta">
+                  <strong>Care Plan Completion 74%</strong>
+                  <span>กำหนด goal และ intervention หลักแล้ว เหลือยืนยัน family agreement และ outcome tracking</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 01</p>
+                  <h3>Plan Snapshot</h3>
+                </div>
+                <span class="validation-badge success">เชื่อมจาก Assessment</span>
+              </div>
+              <div class="stats-grid">
+                <article class="stat-card gradient-border">
+                  <span class="stat-label">Problem List</span>
+                  <strong id="care-plan-problem-count">4</strong>
+                  <small>ประเด็นเร่งด่วน</small>
+                </article>
+                <article class="stat-card">
+                  <span class="stat-label">Goals</span>
+                  <strong id="care-plan-goal-count">3</strong>
+                  <small>เป้าหมายหลักของเคส</small>
+                </article>
+                <article class="stat-card">
+                  <span class="stat-label">Interventions</span>
+                  <strong id="care-plan-intervention-count">8</strong>
+                  <small>งานที่ต้องติดตาม</small>
+                </article>
+                <article class="stat-card">
+                  <span class="stat-label">Review date</span>
+                  <strong id="care-plan-review-date">24 Apr</strong>
+                  <small>ทบทวนแผนครั้งถัดไป</small>
+                </article>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 02</p>
+                  <h3>Problem Prioritization</h3>
+                </div>
+                <span class="validation-badge success">เรียงลำดับแล้ว</span>
+              </div>
+              <div class="stack-list">
+                <div class="list-item">
+                  <div>
+                    <strong id="care-plan-problem-primary">Problem 1: ไม่มีผู้ดูแลที่ยืนยันก่อนจำหน่าย</strong>
+                    <p id="care-plan-problem-primary-note">มีผลต่อ discharge safety และความต่อเนื่องของการดูแลทันที</p>
+                  </div>
+                  <span class="chip chip-danger">Primary</span>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong id="care-plan-problem-secondary">Problem 2: ความพร้อมของบ้านยังไม่ชัดเจน</strong>
+                    <p id="care-plan-problem-secondary-note">ต้องประเมินสภาพบ้านและทรัพยากรในพื้นที่ก่อนกลับบ้าน</p>
+                  </div>
+                  <span class="chip chip-warning">High</span>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong>Problem 3: เครือข่ายชุมชนและทางเลือกสำรองยังไม่พร้อม</strong>
+                    <p>ต้องเตรียม referral และประสานเครือข่ายกรณีครอบครัวไม่พร้อมรับกลับ</p>
+                  </div>
+                  <span class="chip chip-info">Moderate</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 03</p>
+                  <h3>Goal & Intervention Matrix</h3>
+                </div>
+                <span class="validation-badge success">พร้อมติดตาม</span>
+              </div>
+              <div class="goal-card">
+                <p class="eyebrow">Primary Goal</p>
+                <h4>จัดแผนจำหน่ายที่ปลอดภัยและมีผู้ดูแลรองรับภายใน 24 ชั่วโมง</h4>
+                <p class="muted">เชื่อมการประสานงานระหว่าง social work, ward team, ญาติ, และเครือข่ายสำรอง</p>
+              </div>
+                <div class="table-wrap">
+                <table class="premium-table">
+                  <thead>
+                    <tr>
+                      <th>Problem</th>
+                      <th>Goal</th>
+                      <th>Intervention</th>
+                      <th>Owner</th>
+                      <th>Due</th>
+                      <th>Status</th>
+                      <th>Outcome</th>
+                    </tr>
+                  </thead>
+                  <tbody id="care-plan-matrix-body">
+                    <tr>
+                      <td>ไม่มีผู้ดูแลที่ยืนยัน</td>
+                      <td>ยืนยัน caregiver plan</td>
+                      <td>โทรหาบุตรสาวและบุตรชายเพื่อยืนยันบทบาทผู้ดูแล</td>
+                      <td>คุณศิริพร ปรางปรุ</td>
+                      <td>วันนี้ 13:00</td>
+                      <td><span class="chip chip-warning">In progress</span></td>
+                      <td>รอคำยืนยัน</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 04</p>
+                  <h3>JVK SW Case Conferences Information การประชุมหารือสหวิชาชีพ</h3>
+                </div>
+                <span class="validation-badge success" id="care-conference-month-badge">ประวัติรายเดือน</span>
+              </div>
+              <p class="hero-copy">
+                ใช้เก็บรายละเอียดเคสที่เข้าสู่การประชุมหารือสหวิชาชีพรายเดือน เพื่อเตรียมข้อมูลก่อนประชุม ติดตาม progress
+                และสรุปรายการประชุมของแต่ละเดือนในหน้าเดียว
+              </p>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  SW
+                  <select id="care-conference-sw">
+                    <option>คุณศิริพร</option>
+                    <option>คุณกิตติมาพร</option>
+                    <option>คุณนัทธมน</option>
+                    <option>คุณสุภาภรณ์</option>
+                    <option>คุณพงศธร</option>
+                    <option>คุณกนกวรรณ</option>
+                    <option>คุณจุฑาพร</option>
+                    <option>คุณวิฏฐิรษา</option>
+                  </select>
+                </label>
+                <label>
+                  Patient Name
+                  <input type="text" id="care-conference-patient-name" value="Somchai P." />
+                </label>
+                <label>
+                  Intake
+                  <select id="care-conference-intake">
+                    <option>OPD</option>
+                    <option>IPD</option>
+                    <option>ER</option>
+                    <option>OPDเด็ก</option>
+                    <option>นิติจิตเวชOPD</option>
+                    <option>นิติจิตเวชIPD</option>
+                    <option>Homeward</option>
+                  </select>
+                </label>
+                <label>
+                  Consult Date
+                  <input type="text" id="care-conference-consult-date" value="23 เมษายน 2569" />
+                </label>
+                <label>
+                  Sex
+                  <select id="care-conference-sex">
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </label>
+                <label>
+                  Admit date
+                  <input type="text" id="care-conference-admit-date" value="21 เมษายน 2569" />
+                </label>
+                <label>
+                  Age
+                  <input type="text" id="care-conference-age" value="42" />
+                </label>
+                <label>
+                  HN
+                  <input type="text" id="care-conference-hn" value="HN 043991" />
+                </label>
+                <label class="field-span-2">
+                  DX
+                  <input type="text" id="care-conference-dx" value="Schizophrenia with psychosocial discharge barrier" />
+                </label>
+                <label>
+                  Ward
+                  <select id="care-conference-ward">
+                    <option>Homeward</option>
+                    <option>ชัยพฤกษ์</option>
+                    <option>พวงชมพู</option>
+                    <option>พุทธรักษา</option>
+                    <option>กรองจิต</option>
+                    <option>พิรุณทอง</option>
+                    <option>ทองอุไร</option>
+                    <option>เฟื่องฟ้า</option>
+                    <option>OPD</option>
+                    <option>OPเด็ก</option>
+                    <option>ER</option>
+                    <option>นิติจิตเวชOPD</option>
+                    <option>นิติจิตเวชIPD</option>
+                  </select>
+                </label>
+                <label>
+                  MD
+                  <select id="care-conference-md">
+                    <option>นพ.รัฐพล</option>
+                    <option>พญ.ภรฑิตา</option>
+                    <option>พญ.กานต์ธิมา</option>
+                    <option>พญ.อัญชลี</option>
+                    <option>พญ.รวิสุดา</option>
+                    <option>นพ.ปวริศร</option>
+                    <option>พญ.เวธนี</option>
+                    <option>นพ.ณฐกร</option>
+                    <option>พญ.สายสุดา</option>
+                    <option>พญ.กรองกาญจน์</option>
+                    <option>นพ.ภัทรพล</option>
+                  </select>
+                </label>
+                <label class="field-span-2">
+                  รายละเอียดการเตรียมชุมชน (ปัญหาทางสังคม)
+                  <textarea rows="4" id="care-conference-community-detail">ครอบครัวยังไม่ยืนยันผู้ดูแลหลักหลังจำหน่าย ต้องทบทวนแผนรองรับกับ ward team และเครือข่ายในพื้นที่</textarea>
+                </label>
+                <label>
+                  CON DATE
+                  <input type="text" id="care-conference-date" value="24 เมษายน 2569" />
+                </label>
+                <label>
+                  CON TIME
+                  <input type="text" id="care-conference-time" value="13:30 น." />
+                </label>
+                <label class="field-span-2">
+                  สถานที่นัด CON
+                  <input type="text" id="care-conference-location" value="ห้องประชุม MDT ชั้น 2" />
+                </label>
+                <label class="field-span-2">
+                  เตรียมข้อมูลก่อน CON / Progress
+                  <textarea rows="4" id="care-conference-progress">สรุป social assessment, caregiver readiness, discharge barrier, และทางเลือกการส่งต่อสำหรับทีมสหวิชาชีพ</textarea>
+                </label>
+              </div>
+              <div class="toolbar">
+                <span class="muted">เก็บข้อมูลตามเดือนที่เลือกในระบบ และใช้ดูประวัติการประชุมย้อนหลังของแต่ละเดือน</span>
+                <button class="primary-button" id="save-care-conference-button">บันทึกการประชุมสหวิชาชีพ</button>
+              </div>
+              <div class="table-wrap">
+                <table class="premium-table">
+                  <thead>
+                    <tr>
+                      <th>เดือน</th>
+                      <th>ข้อมูลเคส</th>
+                      <th>นัดประชุมสหวิชาชีพ</th>
+                      <th>รายละเอียดการเตรียมชุมชน</th>
+                      <th>Progress</th>
+                    </tr>
+                  </thead>
+                  <tbody id="care-conference-history-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 05</p>
+                  <h3>Community Preparation Information บันทึกข้อมูลการเตรียมชุมชน</h3>
+                </div>
+                <span class="validation-badge warning" id="community-prep-month-badge">งานสังคมสงเคราะห์จิตเวชชุมชน</span>
+              </div>
+              <p class="hero-copy">
+                ใช้บันทึกข้อมูลการเตรียมชุมชนของผู้ป่วยแต่ละราย ตั้งแต่ข้อมูลพื้นฐาน เครือข่ายในและนอกสาธารณสุข
+                จนถึงผลการประเมินความเข้มแข็งของชุมชนและความพร้อมอยู่ต่อเนื่องหลังจำหน่าย
+              </p>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  SW
+                  <select id="community-prep-sw">
+                    <option>คุณศิริพร</option>
+                    <option>คุณกิตติมาพร</option>
+                    <option>คุณนัทธมน</option>
+                    <option>คุณสุภาภรณ์</option>
+                    <option>คุณพงศธร</option>
+                    <option>คุณกนกวรรณ</option>
+                    <option>คุณจุฑาพร</option>
+                    <option>คุณวิฏฐิรษา</option>
+                  </select>
+                </label>
+                <label>
+                  Patient Name
+                  <input type="text" id="community-prep-patient-name" value="Somchai P." />
+                </label>
+                <label>
+                  Intake
+                  <select id="community-prep-intake">
+                    <option>OPD</option>
+                    <option>IPD</option>
+                    <option>ER</option>
+                    <option>OPDเด็ก</option>
+                    <option>นิติจิตเวชOPD</option>
+                    <option>นิติจิตเวชIPD</option>
+                    <option>Homeward</option>
+                  </select>
+                </label>
+                <label>
+                  Consult Date
+                  <input type="text" id="community-prep-consult-date" value="23 เมษายน 2569" />
+                </label>
+                <label>
+                  Sex
+                  <select id="community-prep-sex">
+                    <option>Male</option>
+                    <option>Female</option>
+                  </select>
+                </label>
+                <label>
+                  Admit date
+                  <input type="text" id="community-prep-admit-date" value="21 เมษายน 2569" />
+                </label>
+                <label>
+                  Age
+                  <input type="text" id="community-prep-age" value="42" />
+                </label>
+                <label>
+                  HN
+                  <input type="text" id="community-prep-hn" value="HN 043991" />
+                </label>
+                <label class="field-span-2">
+                  DX
+                  <input type="text" id="community-prep-dx" value="Schizophrenia with psychosocial discharge barrier" />
+                </label>
+                <label>
+                  ตึก
+                  <select id="community-prep-ward">
+                    <option>Homeward</option>
+                    <option>ชัยพฤกษ์</option>
+                    <option>พวงชมพู</option>
+                    <option>พุทธรักษา</option>
+                    <option>กรองจิต</option>
+                    <option>พิรุณทอง</option>
+                    <option>ทองอุไร</option>
+                    <option>เฟื่องฟ้า</option>
+                    <option>OPD</option>
+                    <option>OPเด็ก</option>
+                    <option>ER</option>
+                    <option>นิติจิตเวชOPD</option>
+                    <option>นิติจิตเวชIPD</option>
+                  </select>
+                </label>
+                <label>
+                  MD
+                  <select id="community-prep-md">
+                    <option>นพ.รัฐพล</option>
+                    <option>พญ.ภรฑิตา</option>
+                    <option>พญ.กานต์ธิมา</option>
+                    <option>พญ.อัญชลี</option>
+                    <option>พญ.รวิสุดา</option>
+                    <option>นพ.ปวริศร</option>
+                    <option>พญ.เวธนี</option>
+                    <option>นพ.ณฐกร</option>
+                    <option>พญ.สายสุดา</option>
+                    <option>พญ.กรองกาญจน์</option>
+                    <option>นพ.ภัทรพล</option>
+                  </select>
+                </label>
+                <label class="field-span-2">
+                  รายละเอียดการเตรียมชุมชน (ปัญหาทางสังคม)
+                  <textarea rows="4" id="community-prep-detail">ครอบครัวยังไม่พร้อมรับกลับ ต้องประสานชุมชนและเครือข่ายพื้นที่เพื่อเตรียมแผนรองรับหลังจำหน่าย</textarea>
+                </label>
+                <label class="field-span-2">
+                  ที่อยู่
+                  <input type="text" id="community-prep-address" value="123/4 หมู่ 7 ต.ในเมือง อ.เมืองนครราชสีมา จ.นครราชสีมา" />
+                </label>
+                <label>
+                  ตำบล
+                  <input type="text" id="community-prep-subdistrict" value="ในเมือง" />
+                </label>
+                <label>
+                  อำเภอ
+                  <input type="text" id="community-prep-district" value="เมืองนครราชสีมา" />
+                </label>
+                <label>
+                  จังหวัด
+                  <input type="text" id="community-prep-province" value="นครราชสีมา" />
+                </label>
+                <label>
+                  วันที่เตรียมชุมชน
+                  <input type="text" id="community-prep-date" value="25 เมษายน 2569" />
+                </label>
+                <label class="field-span-2">
+                  สหวิชาชีพภายในโรงพยาบาล JVK
+                  <div class="multi-check-grid" id="community-prep-internal-team">
+                    <label class="check-card"><input type="checkbox" value="นักสังคมสงเคราะห์" checked />นักสังคมสงเคราะห์</label>
+                    <label class="check-card"><input type="checkbox" value="พยาบาลประจำหอผู้ป่วย" checked />พยาบาลประจำหอผู้ป่วย</label>
+                    <label class="check-card"><input type="checkbox" value="พยาบาลจิตเวรชุมชน" />พยาบาลจิตเวรชุมชน</label>
+                    <label class="check-card"><input type="checkbox" value="ผู้ช่วยเหลือผู้ป่วย" />ผู้ช่วยเหลือผู้ป่วย</label>
+                  </div>
+                </label>
+                <label class="field-span-2">
+                  เครือข่ายนอกสาธารณสุข
+                  <div class="multi-check-grid" id="community-prep-external-network">
+                    <label class="check-card"><input type="checkbox" value="รพช." checked />รพช.</label>
+                    <label class="check-card"><input type="checkbox" value="รพสต." />รพสต.</label>
+                    <label class="check-card"><input type="checkbox" value="อบต." />อบต.</label>
+                    <label class="check-card"><input type="checkbox" value="สสอ." />สสอ.</label>
+                    <label class="check-card"><input type="checkbox" value="อำเภอ" />อำเภอ</label>
+                    <label class="check-card"><input type="checkbox" value="ตำรวจ" />ตำรวจ</label>
+                    <label class="check-card"><input type="checkbox" value="พมจ." />พมจ.</label>
+                    <label class="check-card"><input type="checkbox" value="ศูนย์คุ้มครองฯ" />ศูนย์คุ้มครองฯ</label>
+                    <label class="check-card"><input type="checkbox" value="บ้านพักเด็กฯ" />บ้านพักเด็กฯ</label>
+                    <label class="check-card"><input type="checkbox" value="วัด" />วัด</label>
+                    <label class="check-card"><input type="checkbox" value="กำนัน" />กำนัน</label>
+                    <label class="check-card"><input type="checkbox" value="กู้ภัย" />กู้ภัย</label>
+                    <label class="check-card"><input type="checkbox" value="อสม." checked />อสม.</label>
+                    <label class="check-card"><input type="checkbox" value="ผู้ใหญ่บ้าน/ผู้นำชุมชน" checked />ผู้ใหญ่บ้าน/ผู้นำชุมชน</label>
+                  </div>
+                </label>
+                <label>
+                  AN
+                  <input type="text" id="community-prep-an" value="AN 690412" />
+                </label>
+                <label>
+                  การเตรียมชุมชนครั้งที่
+                  <select id="community-prep-round">
+                    <option>เตรียมครั้งที่ 1</option>
+                    <option>เตรียมครั้งที่ 2</option>
+                    <option>เตรียมครั้งที่ 3</option>
+                  </select>
+                </label>
+                <label>
+                  อยู่ได้ 6 เดือน
+                  <select id="community-prep-stay-6m">
+                    <option>ติ๊กถูก</option>
+                    <option>ยังไม่ยืนยัน</option>
+                  </select>
+                </label>
+                <label>
+                  ชุมชนเข้มแข็ง
+                  <select id="community-prep-strong">
+                    <option>ติ๊กถูก</option>
+                    <option>ไม่เลือก</option>
+                  </select>
+                </label>
+                <label>
+                  ชุมชนไม่เข้มแข็ง
+                  <select id="community-prep-weak">
+                    <option>ไม่เลือก</option>
+                    <option>ติ๊กถูก</option>
+                  </select>
+                </label>
+                <label class="field-span-2">
+                  Note
+                  <textarea rows="3" id="community-prep-note">ติดตามประสานเครือข่ายพื้นที่เพิ่มเติมก่อนวันประชุม MDT และประเมินความพร้อมครอบครัวร่วมกับทีม</textarea>
+                </label>
+              </div>
+              <div class="toolbar">
+                <span class="muted">บันทึกข้อมูลการเตรียมชุมชนตามเดือนที่เลือก เพื่อสรุปงานสังคมสงเคราะห์จิตเวชชุมชนย้อนหลังได้</span>
+                <button class="primary-button" id="save-community-prep-button">บันทึกข้อมูลการเตรียมชุมชน</button>
+              </div>
+              <div class="table-wrap">
+                <table class="premium-table">
+                  <thead>
+                    <tr>
+                      <th>เดือน</th>
+                      <th>ข้อมูลเคส</th>
+                      <th>พื้นที่และวันเตรียมชุมชน</th>
+                      <th>เครือข่ายที่ประสาน</th>
+                      <th>ผลประเมินชุมชนและหมายเหตุ</th>
+                      <th>รายละเอียดการเตรียมชุมชน</th>
+                    </tr>
+                  </thead>
+                  <tbody id="community-prep-history-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <div class="care-plan-layout care-plan-layout-wide">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Section 06</p>
+                    <h3>Agreement, Review & Indicators</h3>
+                  </div>
+                </div>
+                <div class="metric-stack">
+                  <div class="metric-row"><span>Review date</span><strong id="care-plan-agreement-review">24 Apr 2026</strong></div>
+                  <div class="metric-row"><span>Client agreement</span><strong id="care-plan-client-agreement">Yes</strong></div>
+                  <div class="metric-row"><span>Family agreement</span><strong id="care-plan-family-agreement">Pending</strong></div>
+                  <div class="metric-row"><span>Plan status</span><strong id="care-plan-status">Active</strong></div>
+                  <div class="metric-row"><span>Discharge barrier</span><strong id="care-plan-barrier">Caregiver + housing</strong></div>
+                </div>
+              </article>
+
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Section 07</p>
+                    <h3>Outcome Tracking</h3>
+                  </div>
+                </div>
+                <div class="form-grid intake-form-grid">
+                  <label>
+                    Expected outcome
+                    <input type="text" value="ผู้ป่วยมีผู้ดูแลชัดเจนและมีแผนกลับบ้านหรือ referral สำรอง" id="care-plan-expected-outcome" />
+                  </label>
+                  <label>
+                    Outcome indicator
+                    <input type="text" value="Caregiver confirmed / MDT cleared / discharge plan documented" id="care-plan-outcome-indicator" />
+                  </label>
+                  <label class="field-span-2">
+                    Progress note
+                    <textarea rows="4" id="care-plan-progress-note">ติดตามญาติหลักแล้ว 1 ครั้ง รอการยืนยันครั้งสุดท้าย และเตรียม plan B สำหรับการส่งต่อกรณีบ้านไม่พร้อม</textarea>
+                  </label>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen" id="referrals">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Coordination Network</p>
+              <h2>Referral Center การส่งต่อและเครือข่าย</h2>
+            </div>
+            <button class="primary-button" id="create-referral-button">Create Referral</button>
+          </div>
+
+          <div class="referral-page">
+            <article class="panel intake-hero-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Referral Workflow</p>
+                  <h3>จัดการการส่งต่อทั้งภายในและภายนอก พร้อมเอกสาร สถานะ และสถิติ</h3>
+                </div>
+                <span class="autosave">Referral draft ready</span>
+              </div>
+              <p class="hero-copy">
+                หน้านี้ออกแบบสำหรับงานสังคมสงเคราะห์โดยตรง เพื่อให้การส่งต่อไปสถานสงเคราะห์ หน่วยงานคุ้มครอง
+                เครือข่ายชุมชน หรือสถานบำบัด มีข้อมูลครบ ติดตามสถานะได้ และดึงไปทำรายงานสถิติได้ต่อเนื่อง
+              </p>
+              <div class="intake-progress-shell">
+                <div class="intake-progress-track">
+                  <span class="intake-progress-bar" style="width: 78%"></span>
+                </div>
+                <div class="intake-progress-meta">
+                  <strong>Referral Completion 78%</strong>
+                  <span>กรอกเหตุผลส่งต่อ เอกสารประกอบ และปลายทางหลักแล้ว เหลือผลตอบรับจากหน่วยงานปลายทาง</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 01</p>
+                  <h3>Referral Form</h3>
+                </div>
+                <span class="validation-badge success">พร้อมส่ง</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  เลขส่งต่อ
+                  <input type="text" value="RF-260423-004" id="referral-id" />
+                </label>
+                <label>
+                  วันที่ส่งต่อ
+                  <input type="text" value="23 เมษายน 2569" id="referral-date" />
+                </label>
+                <label>
+                  ประเภทการส่งต่อ
+                  <select id="referral-type">
+                    <option>ส่งต่อภายนอก</option>
+                    <option>ส่งต่อภายใน</option>
+                    <option>ส่งต่อเพื่อฟื้นฟูต่อเนื่อง</option>
+                  </select>
+                </label>
+                <label>
+                  ปลายทางส่งต่อ
+                  <select id="referral-destination">
+                    <option>บ้านเมตตาจังหวัดนครราชสีมา</option>
+                    <option>ศูนย์คุ้มครองและพัฒนาคุณภาพชีวิตจังหวัดนครราชสีมา</option>
+                    <option>บ้านพักเด็กจังหวัดนครราชสีมา</option>
+                    <option>บ้านพักเด็กจังหวัดชัยภูมิ</option>
+                    <option>สถานสงเคราะห์วัดม่วง</option>
+                    <option>สถานคุ้มครองและพัฒนาคนพิการบ้ากึ่งวิถี (ชาย)</option>
+                    <option>สถานคุ้มครองและพัฒนาคนพิการบ้ากึ่งวิถี (หญิง)</option>
+                    <option>มูลนิธิสวนแก้ว สาขาบุรีรัมย์</option>
+                    <option>สถานสงเคราะห์คนชราบ้านธรรมปกรณ์โพธิ์กลาง</option>
+                    <option>สถานบำบัดเอกชน</option>
+                  </select>
+                </label>
+                <label>
+                  ผู้ประสานงานปลายทาง
+                  <input type="text" value="เจ้าหน้าที่รับเรื่องหน่วยงานปลายทาง" id="referral-contact-person" />
+                </label>
+                <label>
+                  เบอร์ติดต่อปลายทาง
+                  <input type="text" value="0XX-XXX-XXXX" id="referral-contact-phone" />
+                </label>
+                <label>
+                  รูปแบบบริการที่ต้องการ
+                  <select id="referral-service">
+                    <option>รับเข้าพักชั่วคราว / ดูแลต่อเนื่อง</option>
+                    <option>ประเมินความพร้อมในชุมชน</option>
+                    <option>ส่งต่อสถานบำบัด</option>
+                    <option>ฟื้นฟูสมรรถภาพทางสังคม</option>
+                  </select>
+                </label>
+                <label>
+                  ความเร่งด่วนการส่งต่อ
+                  <select id="referral-priority">
+                    <option>เร่งด่วนสูง</option>
+                    <option>เร่งด่วน</option>
+                    <option>ปกติ</option>
+                  </select>
+                </label>
+                <label class="field-span-2">
+                  เหตุผลการส่งต่อ
+                  <textarea rows="4" id="referral-reason">ผู้ป่วยยังไม่มีผู้ดูแลที่ยืนยันได้ชัดเจน บ้านยังต้องประเมินเพิ่ม และจำเป็นต้องมีแผนรองรับกรณีครอบครัวไม่พร้อมรับกลับหลังจำหน่าย</textarea>
+                </label>
+                <label class="field-span-2">
+                  สรุปข้อมูลสำคัญสำหรับปลายทาง
+                  <textarea rows="4" id="referral-summary">สรุปปัญหาทางสังคม ผลการประเมิน ความเสี่ยง จุดแข็ง ทรัพยากรที่มี และข้อเสนอแนะต่อหน่วยงานปลายทางเพื่อรองรับการดูแลต่อเนื่อง</textarea>
+                </label>
+              </div>
+              <div class="actions-row">
+                <button class="primary-button" id="save-referral-button">บันทึก Referral เข้าระบบ</button>
+              </div>
+            </article>
+
+            <div class="care-plan-layout care-plan-layout-wide">
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Section 02</p>
+                    <h3>เอกสารและข้อมูลที่ควรแนบไปด้วย</h3>
+                  </div>
+                </div>
+                <div class="stack-list compact">
+                  <div class="list-item"><div><strong>สรุปเคสสังคมสงเคราะห์</strong><p>Case summary / social work summary</p></div><span class="chip chip-teal">แนบแล้ว</span></div>
+                  <div class="list-item"><div><strong>Psychosocial Assessment</strong><p>ผลประเมินปัญหาทางสังคมและครอบครัว</p></div><span class="chip chip-teal">แนบแล้ว</span></div>
+                  <div class="list-item"><div><strong>Care Plan</strong><p>แผนช่วยเหลือและเป้าหมายการดูแล</p></div><span class="chip chip-info">พร้อมแนบ</span></div>
+                  <div class="list-item"><div><strong>Consent / หนังสือยินยอม</strong><p>เอกสารยินยอมเปิดเผยข้อมูลหรือส่งต่อ</p></div><span class="chip chip-teal">แนบแล้ว</span></div>
+                  <div class="list-item"><div><strong>หนังสือราชการ / หนังสือนำส่ง</strong><p>ใช้กรณีส่งต่ออย่างเป็นทางการ</p></div><span class="chip chip-warning">รอดำเนินการ</span></div>
+                  <div class="list-item"><div><strong>ข้อมูลญาติและผู้ประสาน</strong><p>ชื่อญาติ เบอร์ติดต่อ และบทบาทผู้ดูแล</p></div><span class="chip chip-teal">ครบ</span></div>
+                </div>
+              </article>
+
+              <article class="panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Section 03</p>
+                    <h3>Referral Status Tracker</h3>
+                  </div>
+                </div>
+                <div class="metric-stack">
+                  <div class="metric-row"><span>สถานะปัจจุบัน</span><strong>Sent</strong></div>
+                  <div class="metric-row"><span>วันที่ส่งเอกสาร</span><strong>23 Apr 2026</strong></div>
+                  <div class="metric-row"><span>ผลตอบรับปลายทาง</span><strong>Pending</strong></div>
+                  <div class="metric-row"><span>วันที่ติดตามครั้งถัดไป</span><strong>24 Apr 2026</strong></div>
+                  <div class="metric-row"><span>ผู้ติดตามเรื่อง</span><strong>คุณศิริพร ปรางปรุ</strong></div>
+                </div>
+              </article>
+            </div>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 04</p>
+                  <h3>Referral Pipeline</h3>
+                </div>
+                <span class="validation-badge warning">ติดตามต่อ</span>
+              </div>
+              <div class="stack-list">
+                <div class="list-item">
+                  <div>
+                    <strong>RF-260423-004 · บ้านเมตตาจังหวัดนครราชสีมา</strong>
+                    <p>ส่งเอกสารครบแล้ว รอปลายทางตอบรับเรื่องการรับต่อ</p>
+                  </div>
+                  <span class="chip chip-warning">Sent</span>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong>RF-260421-002 · ศูนย์คุ้มครองและพัฒนาคุณภาพชีวิตจังหวัดนครราชสีมา</strong>
+                    <p>ปลายทางรับทราบแล้ว อยู่ระหว่างพิจารณาศักยภาพการรองรับ</p>
+                  </div>
+                  <span class="chip chip-info">Acknowledged</span>
+                </div>
+                <div class="list-item">
+                  <div>
+                    <strong>RF-260418-001 · สถานบำบัดเอกชน</strong>
+                    <p>ปลายทางตอบรับและกำหนดวันเข้ารับบริการเรียบร้อย</p>
+                  </div>
+                  <span class="chip chip-teal">Accepted</span>
+                </div>
+              </div>
+            </article>
+
+            <div class="dashboard-section-header">
+              <p class="eyebrow">Referral Statistics</p>
+              <h3>สถิติการส่งต่อและปลายทางที่ใช้บ่อย</h3>
+            </div>
+
+            <div class="stats-grid">
+              <article class="stat-card gradient-border">
+                <span class="stat-label">Referral ทั้งหมด</span>
+                <strong>116</strong>
+                <small>ปีงบประมาณปัจจุบัน</small>
+              </article>
+              <article class="stat-card">
+                <span class="stat-label">Referral เดือนนี้</span>
+                <strong>14</strong>
+                <small>เมษายน 2569</small>
+              </article>
+              <article class="stat-card">
+                <span class="stat-label">Accepted rate</span>
+                <strong>78%</strong>
+                <small>ปลายทางตอบรับ</small>
+              </article>
+              <article class="stat-card">
+                <span class="stat-label">Pending response</span>
+                <strong>9</strong>
+                <small>รอติดตามผล</small>
+              </article>
+            </div>
+
+            <article class="panel">
+              <div class="table-wrap">
+                <table class="premium-table">
+                  <thead>
+                    <tr>
+                      <th>ปลายทางส่งต่อ</th>
+                      <th>ทั้งหมด</th>
+                      <th>เดือนนี้</th>
+                      <th>Accepted</th>
+                      <th>Pending</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>บ้านเมตตาจังหวัดนครราชสีมา</td><td>24</td><td>3</td><td>18</td><td>2</td></tr>
+                    <tr><td>ศูนย์คุ้มครองและพัฒนาคุณภาพชีวิตจังหวัดนครราชสีมา</td><td>19</td><td>2</td><td>14</td><td>3</td></tr>
+                    <tr><td>บ้านพักเด็กจังหวัดนครราชสีมา</td><td>16</td><td>2</td><td>11</td><td>2</td></tr>
+                    <tr><td>บ้านพักเด็กจังหวัดชัยภูมิ</td><td>11</td><td>1</td><td>8</td><td>1</td></tr>
+                    <tr><td>สถานสงเคราะห์วัดม่วง</td><td>9</td><td>1</td><td>7</td><td>1</td></tr>
+                    <tr><td>สถานบำบัดเอกชน</td><td>14</td><td>2</td><td>12</td><td>1</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">ข้อมูลสถิติที่ควรเก็บ</p>
+                  <h3>Metrics สำคัญสำหรับงานส่งต่อสังคมสงเคราะห์</h3>
+                </div>
+              </div>
+              <div class="metric-stack">
+                <div class="metric-row"><span>จำนวน referral ต่อเดือน</span><strong>เก็บต่อเนื่อง</strong></div>
+                <div class="metric-row"><span>ปลายทางที่ใช้บ่อยที่สุด</span><strong>Top destination</strong></div>
+                <div class="metric-row"><span>ระยะเวลาตั้งแต่ส่งต่อถึงตอบรับ</span><strong>Turnaround time</strong></div>
+                <div class="metric-row"><span>Accepted / Declined / Pending</span><strong>Outcome tracking</strong></div>
+                <div class="metric-row"><span>ส่งต่อโดยนักสังคมคนใด</span><strong>By worker</strong></div>
+                <div class="metric-row"><span>เหตุผลการส่งต่อที่พบบ่อย</span><strong>Reason analytics</strong></div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Case Referral Registry</p>
+                  <h3>รายการส่งต่อย้อนหลังของเคสปัจจุบัน</h3>
+                </div>
+                <button class="ghost-button" id="export-referral-summary-button">Export Summary</button>
+              </div>
+              <div class="table-wrap">
+                <table class="premium-table">
+                  <thead>
+                    <tr>
+                      <th>เลขส่งต่อ</th>
+                      <th>วันที่</th>
+                      <th>ปลายทาง</th>
+                      <th>ความเร่งด่วน</th>
+                      <th>สถานะ</th>
+                      <th>จัดการ</th>
+                    </tr>
+                  </thead>
+                  <tbody id="referral-history-body"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="reports">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Executive Reporting</p>
+              <h2>รายงานสรุปสำหรับผู้บริหาร</h2>
+            </div>
+            <div class="topbar-actions">
+              <button class="ghost-button" id="generate-report-button">Generate Report</button>
+              <button class="primary-button" id="print-report-button">Print PDF A4</button>
+            </div>
+          </div>
+          <div class="report-toolbar panel">
+            <div>
+              <p class="eyebrow">Report Control</p>
+              <h3>เลือกช่วงเวลาเดียวกับ Dashboard และ Case Inbox แล้วสร้างรายงานได้ทันที</h3>
+            </div>
+            <div class="report-period-summary">
+              <span class="chip chip-violet" id="report-period-badge">เมษายน 2569</span>
+              <span class="chip chip-soft" id="report-fy-badge">FY2569</span>
+              <span class="chip chip-teal">พร้อมพิมพ์ A4</span>
+            </div>
+          </div>
+
+          <div class="report-a4-stack" id="report-print-root">
+            <article class="report-a4-sheet">
+              <div class="report-cover">
+                <div>
+                  <p class="eyebrow">JVK SWMS Executive Brief</p>
+                  <h3 id="report-cover-title">รายงานสรุปผลการดำเนินงานกลุ่มงานสังคมสงเคราะห์จิตเวช</h3>
+                  <p class="hero-copy" id="report-cover-copy">สรุปข้อมูลเคส การประเมิน แผนช่วยเหลือ การส่งต่อ และภาระงานของนักสังคมสงเคราะห์ เพื่อใช้ติดตามภาพรวมรายเดือนและปีงบประมาณ</p>
+                </div>
+                <div class="stats-grid" id="report-top-stats">
+                  <article class="stat-card gradient-border"><span class="stat-label">Total Cases</span><strong>126</strong><small>เมษายน 2569</small></article>
+                  <article class="stat-card"><span class="stat-label">Assessment Complete</span><strong>82%</strong><small>จาก checklist</small></article>
+                  <article class="stat-card"><span class="stat-label">Referral Pipeline</span><strong>14</strong><small>เดือนนี้</small></article>
+                  <article class="stat-card"><span class="stat-label">Priority Level</span><strong>High</strong><small>เคสตัวอย่างปัจจุบัน</small></article>
+                </div>
+              </div>
+
+              <div class="report-two-col">
+                <article class="panel soft-panel">
+                  <div class="panel-header">
+                    <div>
+                      <p class="eyebrow">Executive Summary</p>
+                      <h3>บทสรุปสำหรับผู้บริหาร</h3>
+                    </div>
+                  </div>
+                  <div class="report-summary-copy" id="report-executive-summary"></div>
+                </article>
+
+                <article class="panel soft-panel">
+                  <div class="panel-header">
+                    <div>
+                      <p class="eyebrow">Case Workflow Summary</p>
+                      <h3>Assessment -> Care Plan -> Referral</h3>
+                    </div>
+                  </div>
+                  <div class="metric-stack" id="report-workflow-metrics"></div>
+                </article>
+              </div>
+
+              <article class="panel soft-panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Key Risks & Recommendations</p>
+                    <h3>ประเด็นเสี่ยงสำคัญและข้อเสนอแนะเชิงระบบ</h3>
+                  </div>
+                </div>
+                <div class="report-insight-grid">
+                  <div class="mini-panel" id="report-risk-summary"></div>
+                  <div class="mini-panel" id="report-recommendation-summary"></div>
+                </div>
+              </article>
+            </article>
+
+            <article class="report-a4-sheet">
+              <article class="panel soft-panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Operational Statistics</p>
+                    <h3>สรุปผลงานรายนักสังคมสงเคราะห์และสถิติการส่งต่อ</h3>
+                  </div>
+                </div>
+                <div class="table-wrap">
+                  <table class="premium-table" id="report-owner-table">
+                    <thead>
+                      <tr>
+                        <th>นักสังคมสงเคราะห์</th>
+                        <th>Total ทั้งหมด</th>
+                        <th>เดือนนี้</th>
+                        <th>In-Progress</th>
+                        <th>Referral</th>
+                        <th>Conference</th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+                </div>
+              </article>
+
+              <div class="report-two-col">
+                <article class="panel soft-panel">
+                  <div class="panel-header">
+                    <div>
+                      <p class="eyebrow">Problem Summary</p>
+                      <h3>Problem list และอุปสรรคหลัก</h3>
+                    </div>
+                  </div>
+                  <div class="metric-stack" id="report-problem-list"></div>
+                </article>
+
+                <article class="panel soft-panel">
+                  <div class="panel-header">
+                    <div>
+                      <p class="eyebrow">Referral Summary</p>
+                      <h3>สถิติการส่งต่อและเครือข่ายปลายทาง</h3>
+                    </div>
+                  </div>
+                  <div class="metric-stack" id="report-referral-metrics"></div>
+                </article>
+              </div>
+
+              <article class="panel soft-panel">
+                <div class="panel-header">
+                  <div>
+                    <p class="eyebrow">Prepared By</p>
+                    <h3>หมายเหตุสำหรับการนำเสนอผู้บริหาร</h3>
+                  </div>
+                </div>
+                <div class="report-footer-note" id="report-footer-note">
+                  รายงานฉบับนี้สร้างจากข้อมูล mockup ในระบบต้นแบบ JVK SWMS เพื่อใช้กำหนดรูปแบบรายงานจริงสำหรับผู้บริหาร
+                  โดยสามารถต่อยอดเป็น PDF A4 รายเดือนและปีงบประมาณได้ทันทีเมื่อเชื่อมฐานข้อมูลจริง
+                </div>
+              </article>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="tasks">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Follow-up Engine</p>
+              <h2>Tasks & Calendar</h2>
+            </div>
+            <div class="topbar-actions">
+              <div class="filter-chips">
+                <span class="chip chip-soft active">My Tasks</span>
+                <span class="chip chip-soft">Team Board</span>
+                <span class="chip chip-soft">Overdue</span>
+              </div>
+              <button class="ghost-button" id="export-reminders-summary-button">Export Summary</button>
+            </div>
+          </div>
+
+          <div class="tasks-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Today</p>
+                  <h3>Action queue</h3>
+                </div>
+                <button class="primary-button">+ New Task</button>
+              </div>
+              <div class="stack-list">
+                <div class="task-row">
+                  <span class="task-time">10:00</span>
+                  <div>
+                    <strong>Call daughter to confirm caregiver plan</strong>
+                    <p>SW-240221 · High risk · Due today</p>
+                  </div>
+                  <span class="chip chip-warning">In progress</span>
+                </div>
+                <div class="task-row">
+                  <span class="task-time">13:30</span>
+                  <div>
+                    <strong>MDT conference for discharge barrier</strong>
+                    <p>SW-240198 · Ward team + PT + CM</p>
+                  </div>
+                  <span class="chip chip-info">Scheduled</span>
+                </div>
+                <div class="task-row">
+                  <span class="task-time">15:00</span>
+                  <div>
+                    <strong>Send backup referral packet</strong>
+                    <p>SW-240227 · Community support partner</p>
+                  </div>
+                  <span class="chip chip-soft">Not started</span>
+                </div>
+                <div class="task-row">
+                  <span class="task-time">16:30</span>
+                  <div>
+                    <strong>Review closure summary completeness</strong>
+                    <p>SW-240173 · Data quality check</p>
+                  </div>
+                  <span class="chip chip-teal">Ready</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Calendar Pulse</p>
+                  <h3>Upcoming follow-up rhythm</h3>
+                </div>
+              </div>
+              <div class="calendar-card">
+                <div class="calendar-strip">
+                  <span>22</span>
+                  <span>23</span>
+                  <span class="active-day">24</span>
+                  <span>25</span>
+                  <span>26</span>
+                  <span>27</span>
+                  <span>28</span>
+                </div>
+                <div class="mini-panel">
+                  <p class="eyebrow">24 Apr Highlights</p>
+                  <ul>
+                    <li>2 family conferences</li>
+                    <li>4 pending referral deadlines</li>
+                    <li>3 cases with no update > 72 hrs</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <article class="panel intake-section-panel">
+            <div class="intake-section-heading">
+              <div>
+                <p class="eyebrow">Task Assignment</p>
+                <h3>มอบหมายงาน ติดตาม deadline และแนบไฟล์ได้ในหน้าเดียว</h3>
+              </div>
+              <span class="validation-badge success">พร้อมใช้งาน</span>
+            </div>
+            <div class="form-grid intake-form-grid">
+              <label>
+                ชื่องาน
+                <input type="text" id="task-title-input" value="ประสานหัวหน้าและห้องแพทย์ก่อน D/C" />
+              </label>
+              <label>
+                ผู้มอบหมาย
+                <select id="task-assigner-input">
+                  <option>คุณศิริพร ปรางปรุ (Siriporn - Head of Social Work Department)</option>
+                  <option>คุณกิตติมาพร (SW-Kittimaporn)</option>
+                  <option>คุณนัทธมน (SW-Natthamon)</option>
+                  <option>คุณสุภาภรณ์ (SW-Supaporn)</option>
+                  <option>คุณพงศธร (SW-Pongsatorn)</option>
+                  <option>คุณกนกวรรณ (SW-Kanokwan)</option>
+                  <option>คุณจุฑาพร (SW-Juthaporn)</option>
+                  <option>คุณวิฏฐิรษา (SW-Witthirasa)</option>
+                  <option>คุณศิริพร (AO-Siriporn)</option>
+                </select>
+              </label>
+              <label>
+                มอบหมายแก่คุณ
+                <select id="task-assignee-input">
+                  <option>คุณศิริพร ปรางปรุ (Siriporn - Head of Social Work Department)</option>
+                  <option>คุณกิตติมาพร (SW-Kittimaporn)</option>
+                  <option>คุณนัทธมน (SW-Natthamon)</option>
+                  <option>คุณสุภาภรณ์ (SW-Supaporn)</option>
+                  <option>คุณพงศธร (SW-Pongsatorn)</option>
+                  <option>คุณกนกวรรณ (SW-Kanokwan)</option>
+                  <option>คุณจุฑาพร (SW-Juthaporn)</option>
+                  <option>คุณวิฏฐิรษา (SW-Witthirasa)</option>
+                  <option>คุณศิริพร (AO-Siriporn)</option>
+                </select>
+              </label>
+              <label>
+                Deadline
+                <input type="text" id="task-deadline-input" value="24 เมษายน 2569 · 16:30 น." />
+              </label>
+              <label>
+                แนบไฟล์งาน
+                <input type="text" id="task-file-input" value="discharge-plan-v2.pdf" />
+              </label>
+              <label>
+                Checklist สถานะงาน
+                <select id="task-status-input">
+                  <option>ยังไม่ได้ทำ</option>
+                  <option>กำลังทำอยู่</option>
+                  <option>ประสานหัวหน้า</option>
+                  <option>ห้องแพทย์</option>
+                  <option>ห้องผอ.</option>
+                  <option>ดำเนินการเสร็จสิ้นแล้ว</option>
+                  <option>แนบไฟล์เสร็จสิ้น</option>
+                </select>
+              </label>
+              <label class="field-span-2">
+                รายละเอียดงาน / Note
+                <textarea rows="4" id="task-note-input">ติดตามเอกสารประกอบการจำหน่าย ประสานหัวหน้าและห้องแพทย์ก่อนส่งต่อข้อมูลเข้าระบบ</textarea>
+              </label>
+            </div>
+            <div class="actions-row">
+              <button class="primary-button" id="save-task-button">บันทึกงานมอบหมาย</button>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Reminder Registry</p>
+                <h3>รายการงานมอบหมายและการแจ้งเตือนย้อนหลัง</h3>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="premium-table">
+                <thead>
+                  <tr>
+                    <th>ชื่องาน</th>
+                    <th>ผู้มอบหมาย</th>
+                    <th>ผู้รับมอบหมาย</th>
+                    <th>Deadline</th>
+                    <th>สถานะ</th>
+                    <th>ไฟล์แนบ</th>
+                    <th>จัดการ</th>
+                  </tr>
+                </thead>
+                <tbody id="reminder-history-body"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="screen" id="notes">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Audit-Ready Chronology</p>
+              <h2>Case Notes & Timeline</h2>
+            </div>
+            <div class="topbar-actions">
+              <button class="ghost-button" id="export-notes-summary-button">Export Summary</button>
+              <button class="primary-button" data-open-modal="quick-note-modal">Quick Note</button>
+            </div>
+          </div>
+
+          <div class="notes-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Composer</p>
+                  <h3>บันทึกงานติดต่อ ประสานงาน และหนังสือราชการ</h3>
+                </div>
+                <span class="chip chip-soft">Structured case documentation</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  ประเภทการบันทึก
+                  <select id="notes-composer-type">
+                    <option>บันทึกการโทร</option>
+                    <option>บันทึกการประสานภายใน</option>
+                    <option>บันทึกการทำหนังสือราชการ</option>
+                  </select>
+                </label>
+                <label>
+                  Contact mode
+                  <select id="notes-contact-mode">
+                    <option>โทรศัพท์กลุ่มงานฯ</option>
+                    <option>โทรศัพท์ส่วนตัว</option>
+                    <option>หนังสือบันทึกข้อความภายใน</option>
+                    <option>หนังสือราชการภายนอก</option>
+                  </select>
+                </label>
+                <label>
+                  เบอร์โทรศัพท์ที่ใช้ติดต่อ
+                  <input type="text" id="notes-phone-from" value="044-XXX-210 ต่อ 118" />
+                </label>
+                <label>
+                  เบอร์โทรศัพท์ที่ติดต่อถึง
+                  <input type="text" id="notes-phone-to" value="08X-XXX-4455" />
+                </label>
+                <label>
+                  หนังสือราชการหัวข้อเรื่อง
+                  <input type="text" id="notes-subject" value="ขอความอนุเคราะห์ประเมินความพร้อมรองรับผู้ป่วยต่อเนื่อง" />
+                </label>
+                <label>
+                  ถึงหน่วยงานไหน
+                  <input type="text" id="notes-destination" value="ศูนย์คุ้มครองและพัฒนาคุณภาพชีวิตจังหวัดนครราชสีมา" />
+                </label>
+                <label>
+                  วันเวลาที่ทำ
+                  <input type="text" id="notes-start-datetime" value="23 เมษายน 2569 · 10:30 น." />
+                </label>
+                <label>
+                  วันเวลาที่เสร็จสิ้น
+                  <input type="text" id="notes-end-datetime" value="23 เมษายน 2569 · 11:20 น." />
+                </label>
+                <label>
+                  ผู้รับผิดชอบ
+                  <select id="notes-owner">
+                    <option>คุณศิริพร ปรางปรุ (Siriporn - Head of Social Work Department)</option>
+                    <option>คุณกิตติมาพร (SW-Kittimaporn)</option>
+                    <option>คุณนัทธมน (SW-Natthamon)</option>
+                    <option>คุณสุภาภรณ์ (SW-Supaporn)</option>
+                    <option>คุณพงศธร (SW-Pongsatorn)</option>
+                    <option>คุณกนกวรรณ (SW-Kanokwan)</option>
+                    <option>คุณจุฑาพร (SW-Juthaporn)</option>
+                    <option>คุณวิฏฐิรษา (SW-Witthirasa)</option>
+                    <option>คุณศิริพร (AO-Siriporn)</option>
+                  </select>
+                </label>
+                <label>
+                  มอบหมายแก่คุณ
+                  <select id="notes-assignee">
+                    <option>คุณศิริพร ปรางปรุ (Siriporn - Head of Social Work Department)</option>
+                    <option>คุณกิตติมาพร (SW-Kittimaporn)</option>
+                    <option>คุณนัทธมน (SW-Natthamon)</option>
+                    <option>คุณสุภาภรณ์ (SW-Supaporn)</option>
+                    <option>คุณพงศธร (SW-Pongsatorn)</option>
+                    <option>คุณกนกวรรณ (SW-Kanokwan)</option>
+                    <option>คุณจุฑาพร (SW-Juthaporn)</option>
+                    <option>คุณวิฏฐิรษา (SW-Witthirasa)</option>
+                    <option>คุณศิริพร (AO-Siriporn)</option>
+                  </select>
+                </label>
+                <label>
+                  ผู้ร่วมรับผิดชอบ
+                  <select id="notes-co-owner">
+                    <option>คุณศิริพร ปรางปรุ (Siriporn - Head of Social Work Department)</option>
+                    <option>คุณกิตติมาพร (SW-Kittimaporn)</option>
+                    <option>คุณนัทธมน (SW-Natthamon)</option>
+                    <option>คุณสุภาภรณ์ (SW-Supaporn)</option>
+                    <option>คุณพงศธร (SW-Pongsatorn)</option>
+                    <option>คุณกนกวรรณ (SW-Kanokwan)</option>
+                    <option>คุณจุฑาพร (SW-Juthaporn)</option>
+                    <option>คุณวิฏฐิรษา (SW-Witthirasa)</option>
+                    <option>คุณศิริพร (AO-Siriporn)</option>
+                  </select>
+                </label>
+                <label>
+                  แนบไฟล์
+                  <input type="text" id="notes-file" value="official-letter-draft.pdf" />
+                </label>
+              </div>
+              <label class="full-width">
+                Note
+                <textarea rows="6" id="notes-composer-text">ประสานญาติและหน่วยงานปลายทางเพื่อเตรียมความพร้อมก่อนจำหน่าย โดยยืนยันขั้นตอนการดูแลต่อเนื่องและจัดเตรียมเอกสารประกอบเรียบร้อย</textarea>
+              </label>
+              <div class="risk-flags">
+                <span class="risk-tag active">บันทึกการโทร</span>
+                <span class="risk-tag active">บันทึกการประสานภายใน</span>
+                <span class="risk-tag">บันทึกการทำหนังสือราชการ</span>
+                <span class="risk-tag">แนบไฟล์</span>
+              </div>
+              <div class="actions-row">
+                <button class="primary-button" id="save-notes-page-button">Save to Case Timeline</button>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Timeline</p>
+                  <h3>Latest case activity</h3>
+                </div>
+              </div>
+              <div class="timeline" id="notes-timeline-list">
+                <div class="timeline-item">
+                  <span class="timeline-dot dot-gradient"></span>
+                  <div>
+                    <strong>15:18 Family call note saved</strong>
+                    <p>Daughter may confirm caregiving decision tomorrow morning.</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <span class="timeline-dot"></span>
+                  <div>
+                    <strong>11:32 Initial assessment completed</strong>
+                    <p>Main issues documented: caregiver gap and discharge barrier.</p>
+                  </div>
+                </div>
+                <div class="timeline-item">
+                  <span class="timeline-dot"></span>
+                  <div>
+                    <strong>09:20 Intake created</strong>
+                    <p>Ward referral due to discharge planning concern.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Notes Registry</p>
+                <h3>รายการบันทึกย้อนหลังทั้งหมดของเคส</h3>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="premium-table">
+                <thead>
+                  <tr>
+                    <th>วันที่เริ่ม</th>
+                    <th>วันที่เสร็จสิ้น</th>
+                    <th>ประเภท</th>
+                    <th>Contact mode</th>
+                    <th>หัวข้อ / หน่วยงาน</th>
+                    <th>สรุป</th>
+                    <th>ผู้บันทึก</th>
+                    <th>ผู้รับมอบหมาย</th>
+                    <th>ไฟล์</th>
+                    <th>จัดการ</th>
+                  </tr>
+                </thead>
+                <tbody id="notes-history-body"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="screen" id="coordination">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Shared Work Surface</p>
+              <h2>Coordination Center</h2>
+            </div>
+            <div class="topbar-actions">
+              <button class="ghost-button" id="coordination-export-button">Export PDF A4</button>
+              <button class="primary-button" id="coordination-log-button">Log Contact</button>
+            </div>
+          </div>
+
+          <article class="panel intake-section-panel">
+            <div class="intake-section-heading">
+              <div>
+                <p class="eyebrow">Coordination Filters</p>
+                <h3>เลือกเดือนปีเพื่อดูประวัติการประสานงาน</h3>
+              </div>
+              <span class="validation-badge success">พร้อม export</span>
+            </div>
+            <div class="form-grid intake-form-grid">
+              <label>
+                เดือนที่ต้องการดู
+                <select id="coordination-month-select"></select>
+              </label>
+              <label>
+                ปีงบประมาณ
+                <select id="coordination-fy-select"></select>
+              </label>
+              <label>
+                ประเภทการประสานงาน
+                <select id="coordination-type-filter">
+                  <option>ทั้งหมด</option>
+                  <option>ประสานผ่านโทรศัพท์</option>
+                  <option>ประสานผ่านหนังสือราชการ</option>
+                  <option>บันทึกขอความภายใน</option>
+                </select>
+              </label>
+              <label>
+                สถานะ checklist
+                <select id="coordination-status-filter">
+                  <option>ทั้งหมด</option>
+                  <option>waiting</option>
+                  <option>scheduled</option>
+                  <option>ready</option>
+                  <option>done</option>
+                </select>
+              </label>
+            </div>
+          </article>
+
+          <div class="dashboard-grid coordination-grid-wide">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Contacts</p>
+                  <h3>ข้อมูลการติดต่อญาติผู้ป่วย</h3>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="premium-table">
+                  <thead>
+                    <tr>
+                      <th>ชื่อญาติ</th>
+                      <th>ความสัมพันธ์</th>
+                      <th>เบอร์โทร</th>
+                      <th>หมายเหตุ</th>
+                    </tr>
+                  </thead>
+                  <tbody id="coordination-family-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Contacts</p>
+                  <h3>ข้อมูลการติดต่อเครือข่าย</h3>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="premium-table">
+                  <thead>
+                    <tr>
+                      <th>ชื่อ/หน่วยงาน</th>
+                      <th>เบอร์โทร</th>
+                      <th>พื้นที่</th>
+                      <th>ตำแหน่ง</th>
+                    </tr>
+                  </thead>
+                  <tbody id="coordination-network-body"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+
+          <article class="panel intake-section-panel">
+            <div class="intake-section-heading">
+              <div>
+                <p class="eyebrow">Coordination Composer</p>
+                <h3>บันทึกผลการประสานงานอย่างเป็นระบบ</h3>
+              </div>
+              <span class="validation-badge success">พร้อมใช้งาน</span>
+            </div>
+            <div class="form-grid intake-form-grid">
+              <label>
+                วันที่ประสาน
+                <input type="text" id="coordination-date-input" value="23 เมษายน 2569 · 13:40 น." />
+              </label>
+              <label class="field-span-2">
+                หัวข้อติดตามผลการประสานงาน
+                <input type="text" id="coordination-subject-input" value="ติดตามความพร้อมรับผู้ป่วยต่อเนื่องหลังจำหน่าย" />
+              </label>
+              <label>
+                ผู้ประสาน
+                <select id="coordination-owner-input"></select>
+              </label>
+              <label>
+                ประสานไปที่หน่วยงาน/เครือข่ายไหน
+                <input type="text" id="coordination-target-input" value="ศูนย์คุ้มครองและพัฒนาคุณภาพชีวิตจังหวัดนครราชสีมา" />
+              </label>
+              <label>
+                ผลการประสานงาน
+                <input type="text" id="coordination-result-input" value="หน่วยงานรับทราบและขอเอกสารประกอบเพิ่มเติม" />
+              </label>
+              <label>
+                วันที่ที่ได้รับการประสาน
+                <input type="text" id="coordination-received-input" value="23 เมษายน 2569 · 14:10 น." />
+              </label>
+              <label>
+                ประเภทการประสานงาน
+                <select id="coordination-type-input">
+                  <option>ประสานผ่านโทรศัพท์</option>
+                  <option>ประสานผ่านหนังสือราชการ</option>
+                  <option>บันทึกขอความภายใน</option>
+                </select>
+              </label>
+              <label>
+                Checklist สถานะ
+                <select id="coordination-status-input">
+                  <option>waiting</option>
+                  <option>scheduled</option>
+                  <option>ready</option>
+                  <option>done</option>
+                </select>
+              </label>
+              <label>
+                แนบไฟล์
+                <input type="text" id="coordination-file-input" value="coordination-letter-v1.pdf" />
+              </label>
+              <label class="field-span-2">
+                Note
+                <textarea rows="4" id="coordination-note-input">ประสานเครือข่ายปลายทางเพื่อเตรียมขั้นตอนรองรับผู้ป่วยต่อเนื่อง พร้อมแจ้งเอกสารที่ต้องส่งเพิ่มเติม</textarea>
+              </label>
+            </div>
+            <div class="actions-row">
+              <button class="primary-button" id="save-coordination-button">บันทึก Coordination Log</button>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <p class="eyebrow">Coordination Log</p>
+                <h3>ประวัติการประสานงานย้อนหลัง</h3>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table class="premium-table">
+                <thead>
+                  <tr>
+                    <th>วันที่ประสาน</th>
+                    <th>หัวข้อ</th>
+                    <th>ผู้ประสาน</th>
+                    <th>เครือข่าย/หน่วยงาน</th>
+                    <th>ผลการประสาน</th>
+                    <th>ได้รับการประสาน</th>
+                    <th>ประเภท</th>
+                    <th>สถานะ</th>
+                    <th>ไฟล์</th>
+                  </tr>
+                </thead>
+                <tbody id="coordination-log-body"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <div class="dashboard-grid coordination-grid-wide">
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Network Directory</p>
+                  <h3>รายชื่อข้อมูลหน่วยงาน/เครือข่ายที่ยอดเยี่ยม</h3>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="premium-table">
+                  <thead>
+                    <tr>
+                      <th>ชื่อ/หน่วยงาน</th>
+                      <th>เบอร์โทร</th>
+                      <th>พื้นที่</th>
+                      <th>ตำแหน่ง</th>
+                    </tr>
+                  </thead>
+                  <tbody id="coordination-excellent-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Network Directory</p>
+                  <h3>รายชื่อข้อมูลหน่วยงาน/เครือข่ายที่ไม่ค่อยให้ความร่วมมือ</h3>
+                </div>
+              </div>
+              <div class="table-wrap">
+                <table class="premium-table">
+                  <thead>
+                    <tr>
+                      <th>ชื่อ/หน่วยงาน</th>
+                      <th>เบอร์โทร</th>
+                      <th>พื้นที่</th>
+                      <th>ตำแหน่ง</th>
+                    </tr>
+                  </thead>
+                  <tbody id="coordination-difficult-body"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="screen" id="close-case">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">End-of-Case Workflow</p>
+              <h2>Close / Terminate Case</h2>
+            </div>
+            <div class="detail-status">
+              <span class="chip chip-warning">Closure readiness review</span>
+            </div>
+          </div>
+
+          <div class="care-plan-page">
+            <article class="panel intake-hero-panel">
+              <div class="panel-header">
+                <div>
+                  <p class="eyebrow">Closure Intelligence</p>
+                  <h3>เก็บผลลัพธ์หลังปิดเคส ติดตามการกลับมาซ้ำ และดูความต่อเนื่องหลังคืนสู่ชุมชน</h3>
+                </div>
+                <span class="autosave" id="close-case-month-badge">สรุปผลรายเดือน</span>
+              </div>
+              <p class="hero-copy">
+                หน้านี้ใช้สำหรับบันทึกการปิดเคส เก็บ outcome หลังจำหน่าย ดูว่าเคสใดกลับมา Re-consult หรือ Re-Admitted ซ้ำ
+                และช่วยแยกเคสที่อยู่ในชุมชนได้เกิน 6 เดือนเพื่อใช้เป็นหลักฐานผลลัพธ์ของงานสังคมสงเคราะห์
+              </p>
+              <div class="stats-grid" id="close-case-summary-grid"></div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 01</p>
+                  <h3>แบบบันทึกปิดเคสและติดตามผลหลังปิดเคส</h3>
+                </div>
+                <span class="validation-badge success">พร้อมบันทึก</span>
+              </div>
+              <div class="form-grid intake-form-grid">
+                <label>
+                  เลขเคส
+                  <input type="text" id="close-case-id" value="SWMS-260422-018" />
+                </label>
+                <label>
+                  Patient Name
+                  <input type="text" id="close-case-patient" value="Somjai Prasert" />
+                </label>
+                <label>
+                  นักสังคมที่รับผิดชอบ
+                  <select id="close-case-owner">
+                    <option>คุณศิริพร ปรางปรุ (Siriporn - Head of Social Work Department)</option>
+                    <option>คุณกิตติมาพร (SW-Kittimaporn)</option>
+                    <option>คุณนัทธมน (SW-Natthamon)</option>
+                    <option>คุณสุภาภรณ์ (SW-Supaporn)</option>
+                    <option>คุณพงศธร (SW-Pongsatorn)</option>
+                    <option>คุณกนกวรรณ (SW-Kanokwan)</option>
+                    <option>คุณจุฑาพร (SW-Juthaporn)</option>
+                    <option>คุณวิฏฐิรษา (SW-Witthirasa)</option>
+                    <option>คุณศิริพร (AO-Siriporn)</option>
+                  </select>
+                </label>
+                <label>
+                  วันที่ปิดเคส
+                  <input type="text" id="close-case-date" value="30 เมษายน 2569" />
+                </label>
+                <label>
+                  ประเภทการปิดเคส
+                  <select id="close-case-type">
+                    <option>Terminate case</option>
+                    <option>D/C to community</option>
+                    <option>Transfer out</option>
+                    <option>Refer out and close</option>
+                  </select>
+                </label>
+                <label>
+                  เหตุผลการปิดเคส
+                  <select id="close-case-reason">
+                    <option>เป้าหมายสำเร็จ / ครอบครัวรับกลับ</option>
+                    <option>ส่งต่อหน่วยงานภายนอกต่อเนื่อง</option>
+                    <option>จำหน่ายกลับชุมชนพร้อมติดตาม</option>
+                    <option>ยุติการดูแลโดยทีมสังคมสงเคราะห์</option>
+                  </select>
+                </label>
+                <label>
+                  Follow-up window
+                  <select id="close-case-followup">
+                    <option>ติดตามใน 72 ชั่วโมง</option>
+                    <option>ติดตามใน 7 วัน</option>
+                    <option>ติดตามใน 1 เดือน</option>
+                    <option>ไม่มี follow-up เพิ่ม</option>
+                  </select>
+                </label>
+                <label>
+                  สถานะหลังปิดเคส
+                  <select id="close-case-post-status">
+                    <option>อยู่ชุมชนต่อเนื่อง</option>
+                    <option>กลับมาปรึกษาซ้ำ Re-consult</option>
+                    <option>กลับมานอนซ้ำ Re-Admitted</option>
+                    <option>ปิดเคสแล้วไม่กลับมาเกิน 6 เดือน</option>
+                  </select>
+                </label>
+                <label>
+                  Re-consult ซ้ำ
+                  <select id="close-case-reconsult">
+                    <option>ไม่มี</option>
+                    <option>มี</option>
+                  </select>
+                </label>
+                <label>
+                  Re-admitted ซ้ำ
+                  <select id="close-case-readmit">
+                    <option>ไม่มี</option>
+                    <option>มี</option>
+                  </select>
+                </label>
+                <label>
+                  อยู่ชุมชนได้เกิน 6 เดือน
+                  <select id="close-case-stable6m">
+                    <option>ใช่</option>
+                    <option>ไม่ใช่</option>
+                    <option>อยู่ระหว่างติดตาม</option>
+                  </select>
+                </label>
+                <label>
+                  วันที่กลับมาซ้ำล่าสุด
+                  <input type="text" id="close-case-return-date" value="-" />
+                </label>
+                <label class="field-span-2">
+                  Outcome summary
+                  <textarea rows="4" id="close-case-summary">ครอบครัวยืนยันรับกลับ ผู้ป่วยมีแผนต่อเนื่องในชุมชน และทีมสังคมสงเคราะห์สรุป discharge plan ร่วมกับ MDT แล้ว</textarea>
+                </label>
+                <label class="field-span-2">
+                  แผนติดตามหลังปิดเคส
+                  <textarea rows="4" id="close-case-plan">ติดตามทางโทรศัพท์ภายใน 72 ชั่วโมง หลังจากนั้นทบทวนอีกครั้งที่ 1 เดือน และประเมินการอยู่ในชุมชนครบ 6 เดือน</textarea>
+                </label>
+              </div>
+              <div class="actions-row top-gap">
+                <button class="ghost-button" id="save-close-case-draft-button">Save Draft</button>
+                <button class="primary-button" id="save-close-case-button">Close Case</button>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 02</p>
+                  <h3>Closed Case Registry ประวัติเคสที่ปิดแล้ว</h3>
+                </div>
+                <span class="validation-badge pending">ติดตามผลต่อเนื่อง</span>
+              </div>
+              <div class="close-case-tabs" id="close-case-tabs">
+                <button class="close-case-tab active" data-close-tab="all">ทั้งหมด</button>
+                <button class="close-case-tab" data-close-tab="reconsult">Re-consult</button>
+                <button class="close-case-tab" data-close-tab="readmit">Re-Admitted</button>
+                <button class="close-case-tab" data-close-tab="stable6m">อยู่ชุมชนเกิน 6 เดือน</button>
+              </div>
+              <div class="table-wrap">
+                <table class="premium-table">
+                  <thead>
+                    <tr>
+                      <th>ข้อมูลเคส</th>
+                      <th>รายละเอียดการปิดเคส</th>
+                      <th>ผลลัพธ์หลังปิดเคส</th>
+                      <th>Outcome summary</th>
+                    </tr>
+                  </thead>
+                  <tbody id="close-case-history-body"></tbody>
+                </table>
+              </div>
+            </article>
+
+            <article class="panel intake-section-panel">
+              <div class="intake-section-heading">
+                <div>
+                  <p class="eyebrow">Section 03</p>
+                  <h3>Return Watchlist เคสที่กลับมาซ้ำหลังปิดเคส</h3>
+                </div>
+                <span class="validation-badge warning">watchlist</span>
+              </div>
+              <div class="table-wrap">
+                <table class="premium-table">
+                  <thead>
+                    <tr>
+                      <th>ข้อมูลเคส</th>
+                      <th>รูปแบบการกลับมา</th>
+                      <th>แผนติดตามหลังปิดเคส</th>
+                      <th>ข้อสังเกต</th>
+                    </tr>
+                  </thead>
+                  <tbody id="close-case-watchlist-body"></tbody>
+                </table>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <aside class="drawer-backdrop" id="filter-drawer">
+      <div class="drawer-panel">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">แผงตัวกรอง</p>
+            <h3>ปรับรายการงานที่ต้องการดู</h3>
+          </div>
+          <button class="icon-button" data-close-drawer>×</button>
+        </div>
+        <div class="drawer-body">
+          <label>
+            สถานะ
+            <select>
+              <option>ทุกสถานะ</option>
+              <option>เคสใหม่</option>
+              <option>เคสที่รอดำเนินการ</option>
+              <option>เคสที่กำลังดำเนินการ In-progress</option>
+              <option>เคสที่ดำเนินการเสร็จแล้ว Terminate case / D/C</option>
+            </select>
+          </label>
+          <label>
+            ระดับความเร่งด่วน
+            <select>
+              <option>ทุกระดับ</option>
+              <option>เสี่ยงสูง</option>
+              <option>เร่งด่วน</option>
+              <option>ปกติ</option>
+            </select>
+          </label>
+          <label>
+            นักสังคมที่รับผิดชอบ
+            <select>
+              <option>ทุกคน</option>
+              <option>คุณศิริพร ปรางปรุ (Siriporn - Head of Social Work Department)</option>
+              <option>คุณกิตติมาพร (SW-Kittimaporn)</option>
+              <option>คุณนัทธมน (SW-Natthamon)</option>
+              <option>คุณสุภาภรณ์ (SW-Supaporn)</option>
+              <option>คุณพงศธร (SW-Pongsatorn)</option>
+              <option>คุณกนกวรรณ (SW-Kanokwan)</option>
+              <option>คุณจุฑาพร (SW-Juthaporn)</option>
+              <option>คุณวิฏฐิรษา (SW-Witthirasa)</option>
+            </select>
+          </label>
+          <label>
+            แท็กความเสี่ยง
+            <input type="text" value="ไม่มีผู้ดูแล, อุปสรรคก่อนจำหน่าย" />
+          </label>
+        </div>
+        <div class="drawer-footer">
+          <button class="ghost-button" data-close-drawer>ล้างค่า</button>
+          <button class="primary-button" data-close-drawer>ใช้ตัวกรอง</button>
+        </div>
+      </div>
+    </aside>
+
+    <div class="modal-backdrop" id="quick-action-modal">
+      <div class="modal-panel">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">เมนูลัด</p>
+            <h3>สร้างรายการใหม่อย่างรวดเร็ว</h3>
+          </div>
+          <button class="icon-button" data-close-modal>×</button>
+        </div>
+        <div class="quick-grid">
+          <button class="quick-card" data-screen-jump="intake" data-close-modal>
+            <strong>รับเคสใหม่</strong>
+            <span>เริ่มเคสใหม่จากการส่งปรึกษา</span>
+          </button>
+          <button class="quick-card" data-screen-jump="notes" data-close-modal>
+            <strong>บันทึกด่วน</strong>
+            <span>บันทึกการโทร การอัปเดตจากญาติ หรือการประชุม</span>
+          </button>
+          <button class="quick-card" data-screen-jump="tasks" data-close-modal>
+            <strong>สร้างงานใหม่</strong>
+            <span>สร้างงานติดตามและกำหนดวันครบกำหนด</span>
+          </button>
+          <button class="quick-card" data-screen-jump="referrals" data-close-modal>
+            <strong>สร้าง Referral</strong>
+            <span>เตรียมการประสานงานภายในหรือภายนอก</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="quick-note-modal">
+      <div class="modal-panel">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">บันทึกด่วน</p>
+            <h3>เพิ่มรายการในไทม์ไลน์</h3>
+          </div>
+          <button class="icon-button" data-close-modal>×</button>
+        </div>
+        <div class="drawer-body">
+          <label>
+            ประเภทบันทึก
+            <select id="quick-note-type">
+              <option>บันทึกการโทร</option>
+              <option>บันทึกการประสานภายใน</option>
+              <option>บันทึกการทำหนังสือราชการ</option>
+            </select>
+          </label>
+          <label>
+            สรุปสาระสำคัญ
+            <textarea rows="5" id="quick-note-text">พูดคุยกับตัวแทนครอบครัวแล้ว ขณะนี้รอการยืนยันขั้นสุดท้ายเรื่องการดูแลผู้ป่วยในเช้าวันพรุ่งนี้</textarea>
+          </label>
+        </div>
+        <div class="drawer-footer">
+          <button class="ghost-button" data-close-modal>ยกเลิก</button>
+          <button class="primary-button" data-close-modal id="save-quick-note-button">บันทึก Note</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="upload-modal">
+      <div class="modal-panel">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">อัปโหลดเอกสาร</p>
+            <h3>เพิ่มไฟล์ประกอบเคส</h3>
+          </div>
+          <button class="icon-button" data-close-modal>×</button>
+        </div>
+        <div class="drawer-body">
+          <label>
+            ประเภทเอกสาร
+            <select>
+              <option>สรุปเคส</option>
+              <option>Consent</option>
+              <option>Assessment</option>
+            </select>
+          </label>
+          <label>
+            ชื่อไฟล์
+            <input type="text" value="case-summary-v3.pdf" />
+          </label>
+        </div>
+        <div class="drawer-footer">
+          <button class="ghost-button" data-close-modal>ยกเลิก</button>
+          <button class="primary-button" data-close-modal>อัปโหลด</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" id="export-summary-modal">
+      <div class="modal-panel">
+        <div class="drawer-header">
+          <div>
+            <p class="eyebrow">Export Summary</p>
+            <h3>สรุปข้อมูลพร้อมใช้ต่อในรายงาน</h3>
+          </div>
+          <button class="icon-button" data-close-modal>×</button>
+        </div>
+        <div class="drawer-body">
+          <label class="full-width">
+            Summary Preview
+            <textarea rows="12" id="export-summary-text"></textarea>
+          </label>
+        </div>
+        <div class="drawer-footer">
+          <button class="ghost-button" data-close-modal>ปิด</button>
+          <button class="primary-button" id="print-export-summary-button">พิมพ์สรุป</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-stack" id="toast-stack"></div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
